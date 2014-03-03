@@ -3,11 +3,11 @@
 <hibernate-configuration>  
 <session-factory> 
 	<property name="connection.pool_size">1</property>
-    <property name="connection.url">jdbc:mysql://mymarcio.cmluerpxpvvv.sa-east-1.rds.amazonaws.com/marciodb?autoReconnect=true&amp;characterEncoding=UTF-8</property>  
-    <property name="connection.username">marciosk</property>  
+    <property name="connection.url">jdbc:mysql://?autoReconnect=true&amp;characterEncoding=UTF-8</property>  
+    <property name="connection.username"></property>  
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
     <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>  
-    <property name="connection.password">ei586jif</property>  
+    <property name="connection.password"></property>  
     
   <!--  thread is the short name for  
       org.hibernate.context.ThreadLocalSessionContext  
@@ -23,18 +23,7 @@
 
     <!-- mapping files -->  
     <mapping class="beans.ProdutoBean"/>
-    <mapping class="beans.IpiBean"/>
-    <mapping class="beans.PaisOrigemBean"/>
-	<mapping class="beans.CategoriaBean"/>
-	<mapping class="beans.SubCategoriaBean"/>
-	<mapping class="beans.LicencaBean"/>
-	<mapping class="beans.VlrUnitImpBean"/>
-	<mapping class="beans.VariaveisErpBean"/>
-	<mapping class="beans.InventarioBean"/>
-	<mapping class="beans.Etiqueta40x20Bean"/>
-	<mapping class="beans.Etiqueta75x95Bean"/>
-	<mapping class="beans.EtiquetaBarcodeBean"/>
-	<mapping class="beans.OyakojanBean"/>
+   
 	
 
       
