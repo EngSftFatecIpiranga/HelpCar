@@ -2,12 +2,15 @@ package br.com.helpcar.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+
 import br.com.helpcar.listener.HibernateListener;
 import br.com.helpcar.models.Usuario;
 
@@ -45,6 +48,23 @@ public class UsuarioDao  {
 	    	            .add(Restrictions.eq(campo,valor));
 			}
 	    	
+	}
+	
+	public boolean existeUsuario(Usuario usuario) throws Exception{
+		Session session = null;
+		SessionFactory sessionFactory = 
+      	         (SessionFactory) ServletActionContext.getServletContext()
+                           .getAttribute(HibernateListener.KEY_NAME);
+       
+      	session = sessionFactory.openSession();
+      		
+      	Query query = session.createQuery("FROM Usuario as l WHERE l.nome = :nome AND l.senha = :senha").setString("senha", usuario.getSenha()).setString("nome", usuario.getNomeUsuario());
+      	List usuarios = query.list();
+      	boolean existeUsuario = (usuarios != null && !usuarios.isEmpty());
+      	session.getTransaction().commit();// fecha a transação
+      	
+      	return existeUsuario;
+		
 	}
 	
 	public void cadastraProduto(Usuario usuario){

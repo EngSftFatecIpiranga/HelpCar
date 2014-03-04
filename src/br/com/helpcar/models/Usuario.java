@@ -41,6 +41,12 @@ public class Usuario {
 	@Column(name="data_nascimento")
 	private Calendar vencimentoCnh;
 	
+	@Column(name="nomeUsuario")
+	private String nomeUsuario;
+	
+	@Column(name="senha")
+	private String senha;
+	
 	
 	public String getNome() {
 		return nome;
@@ -88,6 +94,30 @@ public class Usuario {
 	@DateRangeFieldValidator(fieldName="vencimentoCnh", message = "Data inválida", shortCircuit = true, min = "01/01/1900")
 	public void setVencimentoCnh(Calendar vencimentoCnh) {
 		this.vencimentoCnh = vencimentoCnh;
+	}
+
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 	
 	
