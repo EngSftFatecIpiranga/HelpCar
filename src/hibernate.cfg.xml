@@ -9,6 +9,13 @@
     <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>  
     <property name="connection.password"></property>  
     
+    <!-- Controla a conexão com o banco se caso cair -->
+    <property name="hibernate.c3p0.min_size">5</property>
+ 	<property name="hibernate.c3p0.max_size">20</property>
+  	<property name="hibernate.c3p0.timeout">300</property>
+  	<property name="hibernate.c3p0.max_statements">1000</property>
+  	<property name="hibernate.c3p0.idle_test_period">1000</property>
+    
   <!--  thread is the short name for  
       org.hibernate.context.ThreadLocalSessionContext  
       and let Hibernate bind the session automatically to the thread  
@@ -19,10 +26,10 @@
     <property name="hibernate.show_sql">true</property>  
     <property name="hibernate.format_sql">true</property> 
     <property name="hibernate.hbm2ddl.auto">update</property>
-
+	
 
     <!-- mapping files -->  
-    <mapping class="beans.ProdutoBean"/>
+    <mapping class="br.com.helpcar.models.Usuario"/>
    
 	
 
