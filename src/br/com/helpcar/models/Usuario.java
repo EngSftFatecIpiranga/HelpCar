@@ -6,8 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.Table;
-
+import javax.persistence.InheritanceType;
 import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
@@ -18,6 +19,7 @@ import com.opensymphony.xwork2.validator.annotations.Validations;
 @Validations
 @Entity
 @Table(name="usuario")
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 
 public class Usuario {
 	
@@ -35,11 +37,7 @@ public class Usuario {
 	@Column(name="celular", length=11)
 	private String celular;
 	
-	@Column(name="cnh", length=11)
-	private String cnh;
-	
-	@Column(name="data_nascimento")
-	private Calendar vencimentoCnh;
+
 	
 	@Column(name="nomeUsuario")
 	private String nomeUsuario;
@@ -77,24 +75,7 @@ public class Usuario {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-	public String getCnh() {
-		return cnh;
-	}
-	
-	@RegexFieldValidator(fieldName="cnh", message="O campo CNH deve estar no seguinte formato XXXXXXXXXXX", regexExpression="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]")
-	public void setCnh(String cnh) {
-		this.cnh = cnh;
-	}
-	
-	public Calendar getVencimentoCnh() {
-		return vencimentoCnh;
-	}
-	
-	@RequiredFieldValidator(fieldName="vencimentoCnh", message="Campo data vencimento CNH obrigatório")
-	@DateRangeFieldValidator(fieldName="vencimentoCnh", message = "Data inválida", shortCircuit = true, min = "01/01/1900")
-	public void setVencimentoCnh(Calendar vencimentoCnh) {
-		this.vencimentoCnh = vencimentoCnh;
-	}
+
 
 	public String getNomeUsuario() {
 		return nomeUsuario;
