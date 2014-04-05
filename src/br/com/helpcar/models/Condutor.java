@@ -14,7 +14,7 @@ import com.opensymphony.xwork2.validator.annotations.Validations;
 @Entity(name="condutor")
 public class Condutor extends Usuario {
 	
-
+	
 	@Column(name="cnh", length=11)
 	private String cnh;
 	

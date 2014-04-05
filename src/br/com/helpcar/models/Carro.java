@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
@@ -21,7 +23,6 @@ public class Carro {
 	@GeneratedValue
 	@Column(name="id_carro", length=5)
 	private int idCarro;
-	
 	
 	@Column(name="nome", length=30)
 	private String nome;
@@ -48,7 +49,9 @@ public class Carro {
 	private int kmAtual;
 
 
-	
+	@ManyToOne
+	@JoinColumn(name="cnh")
+	private Condutor condutor;
 	
 	
 	public int getIdCarro() {
@@ -133,6 +136,16 @@ public class Carro {
 	@RegexFieldValidator(fieldName="km_atual", message="o campo quilometragem atual deve estar entre 0 e 999.999", regexExpression="[0-999999]")
 	public void setKmAtual(int kmAtual) {
 		this.kmAtual = kmAtual;
+	}
+
+
+	public Condutor getCondutor() {
+		return condutor;
+	}
+
+
+	public void setCondutor(Condutor condutor) {
+		this.condutor = condutor;
 	}
 	
 	

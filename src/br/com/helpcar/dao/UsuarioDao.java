@@ -59,7 +59,7 @@ public class UsuarioDao  {
       	session = sessionFactory.openSession();
       		
       	Query query = session.createQuery("FROM Usuario as l WHERE l.nome = :nome AND l.senha = :senha").setString("senha", usuario.getSenha()).setString("nome", usuario.getNomeUsuario());
-      	List usuarios = query.list();
+      	List  usuarios = query.list();
       	boolean existeUsuario = (usuarios != null && !usuarios.isEmpty());
       	session.getTransaction().commit();// fecha a transação
       	

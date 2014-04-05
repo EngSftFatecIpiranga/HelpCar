@@ -20,7 +20,6 @@ import com.opensymphony.xwork2.validator.annotations.Validations;
 @Entity
 @Table(name="usuario")
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-
 public class Usuario {
 	
 	@Id
