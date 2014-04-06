@@ -1,28 +1,33 @@
 package br.com.helpcar.models;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
 
-
+//
 @Entity
-@Table(name="carro")
-public class Carro {
+@Table(name="veiculo")
+public class Veiculo {
 	
 	@Id
 	@GeneratedValue
-	@Column(name="id_carro", length=5)
-	private int idCarro;
+	@Column(name="id_veiculo", length=5)
+	private int idVeiculo;
 	
 	@Column(name="nome", length=30)
 	private String nome;
@@ -49,19 +54,12 @@ public class Carro {
 	private int kmAtual;
 
 
-	@ManyToOne
-	@JoinColumn(name="cnh")
-	private Condutor condutor;
+	 @ManyToMany(mappedBy="veiculo")
+	private List<Condutor> condutor;
 	
-	
-	public int getIdCarro() {
-		return idCarro;
-	}
 
-
-	public void setIdCarro(int idCarro) {
-		this.idCarro = idCarro;
-	}
+	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "evento")
+	private List<Evento> evento;
 
 	
 	public String getNome() {
@@ -139,14 +137,27 @@ public class Carro {
 	}
 
 
-	public Condutor getCondutor() {
+	public int getIdVeiculo() {
+		return idVeiculo;
+	}
+
+
+	public void setIdVeiculo(int idVeiculo) {
+		this.idVeiculo = idVeiculo;
+	}
+
+
+	public List<Condutor> getCondutor() {
 		return condutor;
 	}
 
 
-	public void setCondutor(Condutor condutor) {
+	public void setCondutor(List<Condutor> condutor) {
 		this.condutor = condutor;
 	}
+
+
+
 	
 	
 	

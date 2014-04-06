@@ -30,6 +30,10 @@
 
     <!-- mapping files -->  
     <mapping class="br.com.helpcar.models.Usuario"/>
+    <mapping class="br.com.helpcar.models.Condutor"/>
+    <mapping class="br.com.helpcar.models.Veiculo"/>
+    <mapping class="br.com.helpcar.models.TipoEvento"/>
+    <mapping class="br.com.helpcar.models.Evento"/>
    
 	
 

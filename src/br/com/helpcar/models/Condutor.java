@@ -2,8 +2,9 @@ package br.com.helpcar.models;
 
 import java.util.Calendar;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+
+
 import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
@@ -21,7 +22,11 @@ public class Condutor extends Usuario {
 	@Column(name="vencimento_cnh")
 	private Calendar vencimentoCnh;
 
-
+	
+	@ManyToMany
+    @JoinTable(name="condutor_has_veiculos", joinColumns={@JoinColumn(name="cnh")}, inverseJoinColumns={@JoinColumn(name="id_veiculo")})
+	private Veiculo veiculo;
+	
 
 	public String getCnh() {
 		return cnh;
