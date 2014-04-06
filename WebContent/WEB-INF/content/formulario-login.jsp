@@ -11,7 +11,7 @@
 	<form action ="login" method ="post">
 		Login: <input type="text" name="usuario.login" /> <br />
 		Senha: <input type="text" name ="usuario.senha" /> <br />
-		
+		<input type="submit" value="Entrar">
 	
 	</form>
 </body>

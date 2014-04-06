@@ -3,11 +3,11 @@ package br.com.helpcar.dao;
 import java.util.List;
 
 import org.hibernate.Query;
-
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
@@ -57,12 +57,14 @@ public class UsuarioDao  {
                            .getAttribute(HibernateListener.KEY_NAME);
        
       	session = sessionFactory.openSession();
-      		
+      	
+      	session.beginTransaction();	
       	Query query = session.createQuery("FROM Usuario as l WHERE l.nome = :nome AND l.senha = :senha").setString("senha", usuario.getSenha()).setString("nome", usuario.getNomeUsuario());
       	List  usuarios = query.list();
       	boolean existeUsuario = (usuarios != null && !usuarios.isEmpty());
       	session.getTransaction().commit();// fecha a transação
       	
+     
       	return existeUsuario;
 		
 	}
