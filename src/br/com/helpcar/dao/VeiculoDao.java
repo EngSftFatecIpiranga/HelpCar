@@ -1,6 +1,8 @@
 package br.com.helpcar.dao;
 
+
 import java.util.List;
+
 
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
@@ -10,13 +12,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
+
 import br.com.helpcar.listener.HibernateListener;
 import br.com.helpcar.models.Veiculo;
 import br.com.helpcar.models.Usuario;
 
+
 public class VeiculoDao {
-	
-	
+
+
+
+
 	@SuppressWarnings("unchecked")
 	public List<Veiculo> listaTodos() throws Exception{
 		Session session = null;
@@ -32,5 +38,6 @@ public class VeiculoDao {
             
            
 	}
-	
+
+
 }
