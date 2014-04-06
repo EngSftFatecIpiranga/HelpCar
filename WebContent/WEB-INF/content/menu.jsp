@@ -7,12 +7,6 @@
 <title>HelpCar</title>
 </head>
 <body>
-	<h2>Login Form</h2>
-	<form action ="login" method ="post">
-		Login: <input type="text" name="usuario.nomeUsuario" /> <br />
-		Senha: <input type="text" name ="usuario.senha" /> <br />
-		<input type="submit" value="Entrar">
-	
-	</form>
+	<h2>Bem vindo, ${usuarioLogado.nomeUsuario}</h2>
 </body>
 </html>

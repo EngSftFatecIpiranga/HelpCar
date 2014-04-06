@@ -25,7 +25,7 @@ public class LoginAction{
 	})
 	public String login() throws Exception{
 		if(new UsuarioDao().existeUsuario(usuario)){
-			usuario.setSenha(EncriptadorSenha.encripta(usuario.getSenha()) );
+			usuario.setSenha(usuario.getSenha());
 			ActionContext.getContext().getSession().put("usuarioLogado", usuario);
 			return "ok";
 		}else{

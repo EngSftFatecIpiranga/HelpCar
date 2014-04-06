@@ -25,6 +25,7 @@ public class UsuarioDao  {
                             .getAttribute(HibernateListener.KEY_NAME);
         
        		session = sessionFactory.openSession();
+       		session.beginTransaction();	
                return session.createCriteria(Usuario.class).list();
           
             
@@ -39,7 +40,7 @@ public class UsuarioDao  {
                            .getAttribute(HibernateListener.KEY_NAME);
        
       		session = sessionFactory.openSession();
-	    	
+      		session.beginTransaction();	
 	    	if (campo.equals("nome")){
 	    		return (List<Usuario>) session.createCriteria(Usuario.class)
 	    	            .add(Restrictions.like(campo,valor, MatchMode.END));
