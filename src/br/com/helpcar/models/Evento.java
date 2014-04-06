@@ -27,9 +27,10 @@ public class Evento {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_veiculo", nullable = false)
-	private List<Veiculo> veiculo;
+	private Veiculo veiculo;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tipo_evento")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_tipo", nullable = false)
 	private TipoEvento tipoEvento;
 	
 	@Column(name="data_evento")
@@ -55,11 +56,12 @@ public class Evento {
 
 
 
-	public List<Veiculo> getVeiculo() {
+
+	public Veiculo getVeiculo() {
 		return veiculo;
 	}
 
-	public void setVeiculo(List<Veiculo> veiculo) {
+	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
 
