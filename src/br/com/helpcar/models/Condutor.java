@@ -1,9 +1,9 @@
 package br.com.helpcar.models;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.*;
-
 
 import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
@@ -25,7 +25,7 @@ public class Condutor extends Usuario {
 	
 	@ManyToMany
     @JoinTable(name="condutor_has_veiculos", joinColumns={@JoinColumn(name="cnh")}, inverseJoinColumns={@JoinColumn(name="id_veiculo")})
-	private Veiculo veiculo;
+	private List<Veiculo> veiculo;
 	
 
 	public String getCnh() {

@@ -1,5 +1,7 @@
 package br.com.helpcar.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,20 +35,26 @@ public class TipoEvento {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_evento", nullable = false)
-	private Evento evento;
+	private List<Evento> evento;
 	
 	
 	public int getIdTipo() {
 		return idTipo;
 	}
 
-	public Evento getEvento() {
+
+
+	public List<Evento> getEvento() {
 		return evento;
 	}
 
-	public void setEvento(Evento evento) {
+
+
+	public void setEvento(List<Evento> evento) {
 		this.evento = evento;
 	}
+
+
 
 	public void setIdTipo(int idTipo) {
 		this.idTipo = idTipo;

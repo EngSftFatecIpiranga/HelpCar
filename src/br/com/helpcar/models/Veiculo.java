@@ -59,7 +59,7 @@ public class Veiculo {
 	
 
 	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "evento")
-	private List<Evento> evento;
+	private Evento evento;
 
 	
 	public String getNome() {

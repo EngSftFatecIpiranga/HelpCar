@@ -1,6 +1,7 @@
 package br.com.helpcar.models;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Evento {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_veiculo", nullable = false)
-	private Veiculo veiculo;
+	private List<Veiculo> veiculo;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tipo_evento")
 	private TipoEvento tipoEvento;
@@ -52,12 +53,14 @@ public class Evento {
 		this.idEvento = idEvento;
 	}
 
-	public Veiculo getCarro() {
+
+
+	public List<Veiculo> getVeiculo() {
 		return veiculo;
 	}
 
-	public void setCarro(Veiculo carro) {
-		this.veiculo = carro;
+	public void setVeiculo(List<Veiculo> veiculo) {
+		this.veiculo = veiculo;
 	}
 
 	public TipoEvento getTipoEvento() {
