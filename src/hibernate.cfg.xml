@@ -3,11 +3,11 @@
 <hibernate-configuration>  
 <session-factory> 
 	<property name="connection.pool_size">1</property>
-    <property name="connection.url">jdbc:mysql://?autoReconnect=true&amp;characterEncoding=UTF-8</property>  
-    <property name="connection.username"></property>  
+    <property name="connection.url">jdbc:mysql://localhost:3306/helpcar?autoReconnect=true&amp;characterEncoding=UTF-8</property>  
+    <property name="connection.username">root</property>  
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
     <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>  
-    <property name="connection.password"></property>  
+    <property name="connection.password">123456</property>  
     
     <!-- Controla a conexão com o banco se caso cair -->
     <property name="hibernate.c3p0.min_size">5</property>

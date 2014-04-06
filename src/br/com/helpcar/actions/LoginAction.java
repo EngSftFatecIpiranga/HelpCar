@@ -10,13 +10,13 @@ import br.com.helpcar.utils.EncriptadorSenha;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport{
+public class LoginAction{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
+	//Hello
 	private Usuario usuario;
 	
 	@Action(value="login", results={

@@ -7,6 +7,12 @@
 <title>HelpCar</title>
 </head>
 <body>
-	<b>Você está no struts!</b>
+	<h2>Login Form</h2>
+	<form action ="login" method ="post">
+		Login: <input type="text" name="usuario.login" /> <br />
+		Senha: <input type="text" name ="usuario.senha" /> <br />
+		
+	
+	</form>
 </body>
 </html>

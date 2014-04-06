@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
  
 public class HibernateListener implements ServletContextListener{
- 
+	//Hello
     private Configuration config;
     private SessionFactory factory;
     private String path = "/hibernate.cfg.xml";
