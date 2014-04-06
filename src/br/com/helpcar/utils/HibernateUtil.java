@@ -26,7 +26,7 @@ public class HibernateUtil {
 	@SuppressWarnings("deprecation")
 	public void close() throws HibernateException, SQLException {
 		if (getSession() != null && getSession().isOpen()) {
-			 getSession().connection().close();  
+			 getSession().disconnect();
 			    getSession().close();  
 		}
 	}
