@@ -8,11 +8,15 @@ import javax.persistence.*;
 import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
-import com.opensymphony.xwork2.validator.annotations.Validations;
 
 
-@Validations
-@Entity(name="condutor")
+/**
+ * Classe Model de condutor 
+ */
+@Entity(name="condutor")  
+@Table(name = "condutor")  
+@DiscriminatorValue ("c") //Tipo de usuario na tabela usuario
+@PrimaryKeyJoinColumn(name="id_usuario") 
 public class Condutor extends Usuario {
 	
 	

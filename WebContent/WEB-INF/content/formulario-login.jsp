@@ -9,7 +9,7 @@
 <body>
 	<h2>Login Form</h2>
 	<form action ="login" method ="post">
-		Login: <input type="text" name="usuario.nomeUsuario" /> <br />
+		Login: <input type="text" name="usuario.login" /> <br />
 		Senha: <input type="text" name ="usuario.senha" /> <br />
 		<input type="submit" value="Entrar">
 	

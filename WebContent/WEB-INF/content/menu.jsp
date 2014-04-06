@@ -7,6 +7,6 @@
 <title>HelpCar</title>
 </head>
 <body>
-	<h2>Bem vindo, ${usuarioLogado.nomeUsuario}</h2>
+	<h2>Bem vindo, ${usuarioLogado.login}</h2>
 </body>
 </html>

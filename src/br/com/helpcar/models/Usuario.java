@@ -2,7 +2,7 @@ package br.com.helpcar.models;
 
 import java.util.Calendar;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,12 +14,14 @@ import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
-import com.opensymphony.xwork2.validator.annotations.Validations;
 
-@Validations
-@Entity
-@Table(name="usuario")
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+/**
+ * Classe Model de usuario 
+ */
+@Entity  
+@Table(name = "usuario",  uniqueConstraints = @UniqueConstraint(columnNames = "id_usuario"))  
+@Inheritance(strategy = InheritanceType.JOINED)// Garante que os atributos padrões da superclasse sejam mapeados nesta classe.  
+@DiscriminatorColumn(name = "tipo_usuario", discriminatorType=DiscriminatorType.STRING) //Tipo de usuario
 public class Usuario {
 	
 	@Id
@@ -38,8 +40,8 @@ public class Usuario {
 	
 
 	
-	@Column(name="nomeUsuario")
-	private String nomeUsuario;
+	@Column(name="login")
+	private String login;
 	
 	@Column(name="senha")
 	private String senha;
@@ -76,12 +78,12 @@ public class Usuario {
 	}
 
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String getSenha() {
