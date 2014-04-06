@@ -52,14 +52,14 @@
                 </td>
                 <td align="left">
                     <html:password property="senhaAntiga" size="16" 
-                        maxlength="12" redisplay="false" value="zzzzz" />
+                        maxlength="12" redisplay="false"/>
                 </td>
             </tr>
  <tr>
                 <td align="right"><bean:message key="prompt.novaSenha" />:</td>
                 <td align="left">
                     <html:password property="novaSenha" size="16" 
-                        maxlength="20" redisplay="false" value="zzzzz" />
+                        maxlength="20" redisplay="false"/>
                 </td>
             </tr>
             <tr>
@@ -68,7 +68,7 @@
                 </td>
                 <td align="left">
                     <html:password property="confirmacaoNovaSenha" size="16" 
-                        maxlength="20" redisplay="false" value="zzzzz" />
+                        maxlength="20" redisplay="false"/>
                 </td>
             </tr>
             <tr>

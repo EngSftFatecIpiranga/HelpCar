@@ -37,7 +37,6 @@
                     </html:link>
                 </td>
                 <td><bean:write name="cars" property="login" /></td>
-                <td><bean:write name="cars" property="descricaoStatus" /></td>
                 <td>
                     <html:link page="/DeleteCar.do" paramId="idVeiculo"
                         paramName="cars" paramProperty="idVeiculo">
