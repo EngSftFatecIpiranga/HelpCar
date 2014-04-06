@@ -2,6 +2,7 @@ package br.com.helpcar.models;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,8 +59,8 @@ public class Veiculo {
 	private List<Condutor> condutor;
 	
 
-	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "evento")
-	private Evento evento;
+	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo")
+	private Set<Evento> evento;
 
 	
 	public String getNome() {
