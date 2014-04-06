@@ -13,7 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="lib/antlr-2.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/asm-3.3.jar"/>
 	<classpathentry kind="lib" path="lib/asm-commons-3.3.jar"/>
@@ -26,10 +25,8 @@
 	<classpathentry kind="lib" path="lib/commons-digester-2.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-fileupload-1.3.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.2.jar"/>
-	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang3-3.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.3.jar"/>
-	<classpathentry kind="lib" path="lib/commons-logging-api-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-validator-1.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/core-0.6.2.jar"/>
 	<classpathentry kind="lib" path="lib/cxf-api-2.7.4.jar"/>
@@ -52,7 +49,6 @@
 	<classpathentry kind="lib" path="lib/guava-r09.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-core-asl-1.9.2.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-mapper-asl-1.9.2.jar"/>
-	<classpathentry kind="lib" path="lib/javassist-3.11.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/jaxb-impl-2.2.6.jar"/>
 	<classpathentry kind="lib" path="lib/json-lib-2.3-jdk15.jar"/>
 	<classpathentry kind="lib" path="lib/juli-6.0.18.jar"/>
@@ -79,37 +75,8 @@
 	<classpathentry kind="lib" path="lib/spring-test-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-web-3.0.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/stax2-api-3.1.1.jar"/>
-	<classpathentry kind="lib" path="lib/struts-core-1.3.10.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-cdi-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-codebehind-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-config-browser-plugin-2.3.16.jar"/>
 	<classpathentry kind="lib" path="lib/struts2-convention-plugin-2.3.16.jar"/>
 	<classpathentry kind="lib" path="lib/struts2-core-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-dojo-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-dwr-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-embeddedjsp-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-gxp-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-jasperreports-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-javatemplates-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-jfreechart-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-jsf-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-json-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-junit-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-osgi-admin-bundle-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-osgi-demo-bundle-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-osgi-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-oval-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-pell-multipart-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-plexus-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-portlet-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-rest-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-sitegraph-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-sitemesh-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-spring-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-struts1-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-testng-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-tiles-plugin-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/struts2-tiles3-plugin-2.3.16.jar"/>
 	<classpathentry kind="lib" path="lib/tagsoup-1.2.1.jar"/>
 	<classpathentry kind="lib" path="lib/tiles-api-2.0.6.jar"/>
 	<classpathentry kind="lib" path="lib/tiles-autotag-core-runtime-1.1.0.jar"/>
@@ -140,20 +107,28 @@
 	<classpathentry kind="lib" path="lib/xpp3_min-1.1.4c.jar"/>
 	<classpathentry kind="lib" path="lib/xstream-1.4.2.jar"/>
 	<classpathentry kind="lib" path="lib/xwork-core-2.3.16.jar"/>
-	<classpathentry kind="lib" path="lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="lib/c3p0-0.9.1.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-2.2.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/ehcache-1.5.0.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
-	<classpathentry kind="lib" path="lib/hibernate3.jar"/>
 	<classpathentry kind="lib" path="lib/infinispan-core-4.0.0.FINAL.jar"/>
-	<classpathentry kind="lib" path="lib/javassist-3.9.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/jbosscache-core-3.2.1.GA.jar"/>
 	<classpathentry kind="lib" path="lib/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/oscache-2.1.jar"/>
 	<classpathentry kind="lib" path="lib/proxool-0.8.3.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="lib/swarmcache-1.0RC2.jar"/>
-	<classpathentry kind="output" path="build/classes"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.7-bin.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-ehcache-4.3.5.Final.jar"/>
+	<classpathentry kind="lib" path="lib/ehcache-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-commons-annotations-4.0.4.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-core-4.3.5.Final.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/jandex-1.1.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/javassist-3.18.1-GA.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-logging-3.1.3.GA.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+	<classpathentry kind="lib" path="lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-2.7.7.jar"/>
+	<classpathentry kind="output" path="build"/>
 </classpath>

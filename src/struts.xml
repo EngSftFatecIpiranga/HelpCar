@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="autorizador" class="br.com.helpcar.interceptor.AutorizadorInterceptor"/>
+			<interceptor-stack name="seguranca">
+				<interceptor-ref name="autorizador"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>		
+		</interceptors>		
+		<global-results>
+			<result name="naoLogado">/WEB-INF/content/forumlario-login.jsp</result>
+		</global-results>
+		<action name="loginForm">
+			<result>/WEB-INF/content/formulario-login.jsp</result>
+		</action>
+
+	</package>
+</struts>
