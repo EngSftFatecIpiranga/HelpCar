@@ -7,6 +7,7 @@
 <title>HelpCar</title>
 </head>
 <body>
-	<h2>Bem vindo, ${usuarioLogado.login}</h2>
+	<h2>Bem vindo, ${usuarioLogado.nome}</h2>
+	<h2>Carro: ${veiculoLogado.modelo}</h2>
 </body>
 </html>

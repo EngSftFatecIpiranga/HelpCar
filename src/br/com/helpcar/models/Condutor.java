@@ -8,11 +8,13 @@ import javax.persistence.*;
 import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.Validations;
 
 
 /**
  * Classe Model de condutor 
  */
+
 @Entity(name="condutor")  
 @Table(name = "condutor")  
 @DiscriminatorValue ("c") //Tipo de usuario na tabela usuario
@@ -27,8 +29,8 @@ public class Condutor extends Usuario {
 	private Calendar vencimentoCnh;
 
 	
-	@ManyToMany
-    @JoinTable(name="condutor_has_veiculos", joinColumns={@JoinColumn(name="cnh")}, inverseJoinColumns={@JoinColumn(name="id_veiculo")})
+	@ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="condutor_has_veiculos", joinColumns={@JoinColumn(name="id_usuario")}, inverseJoinColumns={@JoinColumn(name="id_veiculo")})
 	private List<Veiculo> veiculo;
 	
 
@@ -36,7 +38,7 @@ public class Condutor extends Usuario {
 		return cnh;
 	}
 	
-	@RegexFieldValidator(fieldName="cnh", message="O campo CNH deve estar no seguinte formato XXXXXXXXXXX", regexExpression="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]")
+
 	public void setCnh(String cnh) {
 		this.cnh = cnh;
 	}
@@ -45,10 +47,17 @@ public class Condutor extends Usuario {
 		return vencimentoCnh;
 	}
 	
-	@RequiredFieldValidator(fieldName="vencimentoCnh", message="Campo data vencimento CNH obrigatório")
-	@DateRangeFieldValidator(fieldName="vencimentoCnh", message = "Data inválida", shortCircuit = true, min = "01/01/1900")
+
 	public void setVencimentoCnh(Calendar vencimentoCnh) {
 		this.vencimentoCnh = vencimentoCnh;
+	}
+
+	public List<Veiculo> getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(List<Veiculo> veiculo) {
+		this.veiculo = veiculo;
 	}
 	
 	

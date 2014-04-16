@@ -15,9 +15,12 @@
 		<global-results>
 			<result name="naoLogado">/WEB-INF/content/forumlario-login.jsp</result>
 		</global-results>
-		<action name="loginForm">
+		<!--		<action name="loginForm">
 			<result>/WEB-INF/content/formulario-login.jsp</result>
 		</action>
+		  <action name="cadastroForm">
+			<result>/WEB-INF/content/formulario-usuario.jsp</result>
+		</action>-->
 
 	</package>
 </struts>

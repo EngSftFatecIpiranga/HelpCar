@@ -43,9 +43,16 @@ public class Evento {
 	
 	@Column(name="data_limite")
 	private Calendar dataLimite;
+
+
+	@Column(name="km_limite")
+	private int kmLimite;
 	
 	@Column(name="litros")
 	private int litros;
+	
+	@Column(name="d_e_l_e_t" , columnDefinition ="tinyint default 0")
+	private boolean d_e_l_e_t;
 	
 
 	public int getIdEvento() {
@@ -95,6 +102,15 @@ public class Evento {
 	public void setDataLimite(Calendar dataLimite) {
 		this.dataLimite = dataLimite;
 	}
+	
+	
+	public int getKmLimite() {
+		return kmLimite;
+	}
+
+	public void setKmLimite(int kmLimite) {
+		this.kmLimite = kmLimite;
+	}
 
 	public int getLitros() {
 		return litros;
@@ -102,6 +118,14 @@ public class Evento {
 
 	public void setLitros(int litros) {
 		this.litros = litros;
+	}
+
+	public boolean getD_e_l_e_t() {
+		return d_e_l_e_t;
+	}
+
+	public void setD_e_l_e_t(boolean d_e_l_e_t) {
+		this.d_e_l_e_t = d_e_l_e_t;
 	}
 	
 	

@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,8 +43,8 @@ public class Veiculo {
 	private String modelo;
 	
 	
-	@Column(name="fabricacao")
-	private Calendar fabricacao;
+	@Column(name="fabricacao", length=4)
+	private int fabricacao;
 	
 	
 	@Column(name="km_inicial")
@@ -54,13 +55,19 @@ public class Veiculo {
 	private int kmAtual;
 
 
-	 @ManyToMany(mappedBy="veiculo")
+	 @ManyToMany(cascade=CascadeType.ALL ,mappedBy="veiculo")
 	private List<Condutor> condutor;
 	
 
 	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo")
 	private Set<Evento> evento;
-
+	 
+	 
+	 @Column(name="d_e_l_e_t" , columnDefinition ="tinyint default 0")
+	private boolean d_e_l_e_t;
+	
+	
+	
 	
 	public String getNome() {
 		return nome;
@@ -105,12 +112,13 @@ public class Veiculo {
 	}
 
 
-	public Calendar getFabricacao() {
+	public int getFabricacao() {
 		return fabricacao;
 	}
-
-
-	public void setFabricacao(Calendar fabricacao) {
+	
+	@RequiredStringValidator(fieldName="fabricacao", message="Campo obrigatório", shortCircuit=true)
+	@RegexFieldValidator(fieldName="fabricacao", message="o campo fabricao deve estar no seguinte formato 9999", regexExpression="[0-9][0-9][0-9][0-9]")
+	public void setFabricacao(int fabricacao) {
 		this.fabricacao = fabricacao;
 	}
 
@@ -154,6 +162,22 @@ public class Veiculo {
 
 	public void setCondutor(List<Condutor> condutor) {
 		this.condutor = condutor;
+	}
+
+	public boolean isD_e_l_e_t() {
+		return d_e_l_e_t;
+	}
+
+	public void setD_e_l_e_t(boolean d_e_l_e_t) {
+		this.d_e_l_e_t = d_e_l_e_t;
+	}
+
+	public Set<Evento> getEvento() {
+		return evento;
+	}
+
+	public void setEvento(Set<Evento> evento) {
+		this.evento = evento;
 	}
 
 

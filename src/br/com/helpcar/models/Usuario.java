@@ -3,21 +3,20 @@ package br.com.helpcar.models;
 import java.util.Calendar;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.Table;
-import javax.persistence.InheritanceType;
+
 import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.EmailValidator;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
+import com.opensymphony.xwork2.validator.annotations.Validations;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 /**
  * Classe Model de usuario 
  */
+
 @Entity  
 @Table(name = "usuario",  uniqueConstraints = @UniqueConstraint(columnNames = "id_usuario"))  
 @Inheritance(strategy = InheritanceType.JOINED)// Garante que os atributos padrões da superclasse sejam mapeados nesta classe.  
@@ -38,8 +37,10 @@ public class Usuario {
 	@Column(name="celular", length=11)
 	private String celular;
 	
+	@Column(name="email", length=45)
+	private String email;
 
-	
+
 	@Column(name="login")
 	private String login;
 	
@@ -47,12 +48,14 @@ public class Usuario {
 	private String senha;
 	
 	
+	@Column(name="d_e_l_e_t" , columnDefinition ="tinyint default 0")
+	private boolean d_e_l_e_t;
+	
 	public String getNome() {
 		return nome;
 	}
 	
-	@RequiredStringValidator(fieldName="nome", message="Campo obrigatório", shortCircuit=true)
-	@StringLengthFieldValidator(fieldName="nome", message="Mínimo 10 caracteres", minLength="10")
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -62,8 +65,7 @@ public class Usuario {
 		return dataNascimento;
 	}
 	
-	@RequiredFieldValidator(fieldName="dataNascimento", message="Campo data nascimento obrigatório")
-	@DateRangeFieldValidator(fieldName="dataNascimento", message = "Data inválida", shortCircuit = true, min = "01/01/1900")
+
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
@@ -72,9 +74,18 @@ public class Usuario {
 		return celular;
 	}
 	
-	@RegexFieldValidator(fieldName="celular", message="O campo celular deve estar no seguinte formato XX-XXXXX-XXXX", regexExpression="[0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]")
+
 	public void setCelular(String celular) {
 		this.celular = celular;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
@@ -100,6 +111,14 @@ public class Usuario {
 
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
+	}
+
+	public boolean isD_e_l_e_t() {
+		return d_e_l_e_t;
+	}
+
+	public void setD_e_l_e_t(boolean d_e_l_e_t) {
+		this.d_e_l_e_t = d_e_l_e_t;
 	}
 	
 	
