@@ -19,7 +19,7 @@ public class CadastraEventoAction {
 	
 	@Action(value="cadastraEvento", results={
 			@Result(name="ok", location ="menu.jsp"),
-			@Result(name="erro", params={"actionName","cadatroEventoForm", "msg", "${msg}"})
+			@Result(name="erro", type= "redirectAction",params={"actionName","cadatroEventoForm", "msg", "${msg}"})
 	})
 	public String execute(){
 		

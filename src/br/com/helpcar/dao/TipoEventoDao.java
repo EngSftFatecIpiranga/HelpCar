@@ -52,8 +52,8 @@ public class TipoEventoDao {
 
 	@SuppressWarnings("unchecked")
 	public List<TipoEvento> listaTodos(){
-
-             return session.createCriteria(TipoEvento.class).list();
+		session.beginTransaction();	
+        return session.createCriteria(TipoEvento.class).list();
         
           
          

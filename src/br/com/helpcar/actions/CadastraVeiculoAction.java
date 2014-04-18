@@ -23,8 +23,8 @@ public class CadastraVeiculoAction {
 	private Condutor condutor;
 	private CondutorDao condutorDao;
 	@Action(value="cadastraVeiculo", results={
-			@Result(name="ok", location ="formulari.jsp"),
-			@Result(name="erro", params={"actionName","cadatroVeiculoForm", "msg", "${msg}"})
+			@Result(name="ok",type= "redirectAction", params={"actionName","cadastroEventoForm", "msg", "${msg}"}),
+			@Result(name="erro",type= "redirectAction", params={"actionName","cadatroVeiculoForm", "msg", "${msg}"})
 	})
 	public String execute(){
 		veiculos = new ArrayList<Veiculo>();

@@ -14,7 +14,7 @@ import br.com.helpcar.models.Veiculo;
 
 public class CadastroEventoFormAction {
 	private String msg;
-	private List<TipoEvento> tiposEvento;
+	private List<TipoEvento> tiposEvento; 
 	private TipoEventoDao tipoEventoDao;
 	private Veiculo veiculo;
 	
@@ -22,6 +22,7 @@ public class CadastroEventoFormAction {
 			@Result(name="ok", location ="formulario-evento.jsp")
 	})
 	public String execute() {
+		tipoEventoDao = new TipoEventoDao();
 
 		setTiposEvento(tipoEventoDao.listaTodos());
 		
@@ -38,6 +39,12 @@ public class CadastroEventoFormAction {
 	}
 	public void setTiposEvento(List<TipoEvento> tiposEvento) {
 		this.tiposEvento = tiposEvento;
+	}
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
 	
 	

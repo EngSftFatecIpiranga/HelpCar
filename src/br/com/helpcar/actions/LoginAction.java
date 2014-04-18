@@ -27,7 +27,7 @@ public class LoginAction{
 	
 	@Action(value="login", results={
 			@Result(name="ok", location ="menu.jsp"),
-			@Result(name="cadastreVeiculo", type= "redirectAction", params={"actionName","cadastraVeiculoForm", "msg", "${msg}"}),
+			@Result(name="cadastreVeiculo", type= "redirectAction", params={"actionName","cadastroVeiculoForm", "msg", "${msg}"}),
 			@Result(name="escolha", location="escolhaVeiculo.jsp"),
 			@Result(name="invalido", location="formulario-login.jsp")
 	})
