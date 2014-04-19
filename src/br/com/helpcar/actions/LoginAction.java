@@ -24,14 +24,15 @@ public class LoginAction{
 	private List<Veiculo> veiculos;
 	private Veiculo veiculo;
 	private String msg;
+	private String tipo;
 	
 	@Action(value="login", results={
 			@Result(name="ok", location ="menu.jsp"),
-			@Result(name="cadastreVeiculo", type= "redirectAction", params={"actionName","cadastroVeiculoForm", "msg", "${msg}"}),
-			@Result(name="escolha", location="escolhaVeiculo.jsp"),
-			@Result(name="invalido", location="formulario-login.jsp")
+			@Result(name="cadastreVeiculo", type= "redirectAction", params={"actionName","cadastroVeiculoForm", "msg", "${msg}","tipo","${tipo}"}),
+			@Result(name="escolha",  type= "redirectAction", params={"actionName","escolhaVeiculoForm", "msg", "${msg}","tipo","${tipo}"}),
+			@Result(name="invalido", type= "redirectAction", params={"actionName","loginForm", "msg", "${msg}","tipo","${tipo}"})
 	})
-	public String login() throws Exception{
+	public String execute() throws Exception{
 		
 		condutorDao = new CondutorDao();
 		condutor.setLogin(condutor.getLogin());
@@ -47,13 +48,18 @@ public class LoginAction{
 			}else{
 				if(veiculos.size()>1){
 					ActionContext.getContext().getSession().put("listaVeiculos", veiculos);
+					setMsg("Usuario logado com sucesso, escolha o veiculo!");
+					setTipo("notice");					
 					return "escolha";
 				}else{
+					setMsg("Usuario logado com sucesso, cadastre seu veiculo!");
+					setTipo("notice");
 					return "cadastreVeiculo";
 				}
 			}
 		}else{
-			
+			setMsg("Usuario nao cadastrado. Tente novamente");
+			setTipo("error");
 			return "invalido";
 		}
 	}
@@ -88,6 +94,14 @@ public class LoginAction{
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	

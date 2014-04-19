@@ -5,7 +5,10 @@
 
 
 <html>
-
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="js/jquery.toastmessage.js" type="text/javascript"></script>
+<link href="css/jquery.toastmessage.css" rel="stylesheet" type="text/css" />   
+<script src="js/mensagem.js" type="text/javascript"></script>
 
 
 <head>

@@ -1,26 +1,21 @@
 package br.com.helpcar.actions;
 
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 
-import com.opensymphony.xwork2.ActionContext;
-
 import br.com.helpcar.dao.CondutorDao;
 import br.com.helpcar.models.Condutor;
-import br.com.helpcar.utils.EncriptadorSenha;
 
-public class LembrarSenhaAction {
+import com.opensymphony.xwork2.ActionContext;
+
+public class AtualizaCondutorAction {
+
 	private Condutor condutor;
-	private Condutor condutorAux;
 	private CondutorDao condutorDao;
 	private String msg; 
-	private int senhaProvisoria;
-	
-	@Action(value="lembraSenha", results={
+	private String tipoMsg; 
+
+	@Action(value="atualizaCondutor", results={
 			@Result(name="ok", location ="menu.jsp"),
 			@Result(name="erro", location ="menu.jsp")
 	
@@ -28,17 +23,18 @@ public class LembrarSenhaAction {
 	public String execute(){
 		
 		condutorDao = new CondutorDao();
-		condutorAux = condutorDao.achaCondutor(condutor.getEmail(), "email", condutor.getNome(), "nome", condutor.getCnh(),"cnh");
-		if(condutor!=null){
-			condutorAux.setSenha(condutor.getSenha());
-			condutor = condutorAux;
-			ActionContext.getContext().getSession().put("usuarioLogado", condutor);
+		try{
+			condutor = (Condutor)ActionContext.getContext().getSession().get("usuarioLogado");
+			condutorDao.atualizaCondutor(condutor);
+			setMsg("Usuario alterado com sucesso!");
+			setTipoMsg("success");
 			return "ok";
-		}else{
+		}catch (Exception e){
+			System.out.println(e);
+			setMsg("Erro ao atualizado o usuario!");
+			setTipoMsg("error");
 			return "erro";
 		}
-		
-
 		
 	}
 	
@@ -53,6 +49,14 @@ public class LembrarSenhaAction {
 	}
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getTipoMsg() {
+		return tipoMsg;
+	}
+
+	public void setTipoMsg(String tipoMsg) {
+		this.tipoMsg = tipoMsg;
 	}
 	
 }

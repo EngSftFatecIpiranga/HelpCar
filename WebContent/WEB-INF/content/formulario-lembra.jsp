@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>  
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -13,18 +14,17 @@
 	 	var msg =document.getElementById("msg").value;
 
 	 	if(msg!=''){
-	 		$().toastmessage('showToast', {
-                text: 'Error Dialog Fixo',
+            $().toastmessage('showToast', {
+                text: msg,
                 sticky: true,
-                position: 'center',
-                type: 'error',
-                closeText: '',
+                position: 'top-center',
+                type: 'success',
+                closeText:'',
                 close: function () {
-                console.log("toast is closed ...");
-               	}
+                    console.log("toast is closed ...");
+                }
             });
-	    }
-	 	
+	 	}
  	};
   
  </script>
@@ -33,18 +33,15 @@
 <title>HelpCar</title>
 </head>
 <body>
-	<h2>Cadastro Usuário</h2>
-	<s:form action ="cadastraUsuario" method ="post" validate="true">
-		<s:textfield name="condutor.nome" label="Nome"  /> <br />
-		<s:textfield name="condutor.email" label="Email" /> <br />
 
-		<s:textfield name="condutor.celular"  label="Celular" /> <br />
-		<s:textfield name="condutor.cnh" label="CNH" /> <br />
-
-		<s:textfield name="condutor.login" label="Login:"  /> <br />
-		<s:password name="condutor.senha" label="Senha"  /> <br />
+	<h2>Lembrar Senha</h2>
+	<s:form action ="lembraSenha" method ="post">
 		<input type="hidden" name="msg" id="msg"value="${msg}" />
-		<s:submit name= "cadastra" value="Cadastra" type="button" align="center" method="post" />
+		<s:textfield name ="condutor.nome"  label="Nome"/>
+		<s:password name ="condutor.email"  label = "E-mail" />
+		<s:password name ="condutor.CNH"  label = "CNH" />
+		<s:password name ="condutor.Senha"  label = "Senha Nova" />
+		<s:submit value ="entrar"  />
 	</s:form>
-
+</body>
 </html>

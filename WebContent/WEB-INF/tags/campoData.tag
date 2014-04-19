@@ -2,6 +2,6 @@
 
 <input type="text" id="${id}" name="${id}" />
 <script type="text/javascript">
-	$("#${id}").datepicker();
+	$( "#${id}" ).datepicker({dateFormat: 'dd/mm/yy'});
 
 </script>

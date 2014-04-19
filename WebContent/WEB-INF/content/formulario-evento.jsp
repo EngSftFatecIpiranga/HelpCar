@@ -10,8 +10,9 @@
 <script src="js/jquery.toastmessage.js" type="text/javascript"></script>
 <link href="css/jquery.toastmessage.css" rel="stylesheet" type="text/css" />   
 <link rel="stylesheet" href="css/jquery-ui-1.10.4.css">
- <script src="js/jquery-1.10.2.js"></script>
- <script src="js/jquery-ui-1.10.4.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.4.js"></script>
+
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -20,8 +21,8 @@
 <body>
 
 	<h2>Cadastro de eventos</h2>
+	<c:set var="count" value="0" scope="page" />
 	<c:forEach var="tipo"  items="${tiposEvento}">
-		<c:set var="count" value="0" scope="page" />
 		<input type="hidden" name ="eventos[${count}].idTipo"value="${tipo.idTipo}" />
 		<input type="hidden" name ="eventos[${count}].idVeiculo"value="${veiculo.idVeiculo}" />    
 		<input type="checkbox" id="check${tipo.nomeEvento}" value="${tipo.nomeEvento}"><img width="30" height="30" alt="" src="img/${tipo.nomeEvento}.jpg">${tipo.nomeEvento}

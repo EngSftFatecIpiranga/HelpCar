@@ -174,5 +174,23 @@ public class CondutorDao  {
 		
 	}
 	
+	public Condutor achaCondutor(String valor1, String campo1,String valor2, String campo2,String valor3, String campo3) {
+		try{
+			session.beginTransaction();	
+			return (Condutor) session.createCriteria(Condutor.class)
+			            .add(Restrictions.eq(campo1,valor1)).add(Restrictions.eq(campo2,valor2))
+			            .add(Restrictions.eq(campo3,valor3)).uniqueResult();
+		
+		}catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println(e);
+
+		}
+		return null; 
+		
+	}
+	
+	
+	
 
 }
