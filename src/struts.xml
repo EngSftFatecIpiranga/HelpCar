@@ -13,7 +13,7 @@
 			</interceptor-stack>		
 		</interceptors>		
 		<global-results>
-			<result name="naoLogado">/WEB-INF/content/forumlario-login.jsp</result>
+			<result name="naoLogado">/WEB-INF/content/formulario-login.jsp</result>
 		</global-results>
 		<!--		<action name="loginForm">
 			<result>/WEB-INF/content/formulario-login.jsp</result>
@@ -23,4 +23,5 @@
 		</action>-->
 
 	</package>
+	
 </struts>
