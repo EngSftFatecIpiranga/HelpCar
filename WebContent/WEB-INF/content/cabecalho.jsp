@@ -29,10 +29,10 @@
 			<td>
 				<div id="menu">
 			    	<ul>
-    					<li><a href="index.html">Help Car</a></li>
-                        <li><a href="manutencao-automotiva.html">Manutenção Automotiva</a></li>
-                        <li><a href="conheca-seu-carro.html">Conheça seu Carro</a></li>
-    					<li><a href="http://localhost:8080/HelpCar/loginForm">Cadastro/Login</a></li>
+    						<li><%response.sendRedirect("/HelpCar/index");%></li>
+                        <li><a href="<%=response.encodeURL("formulario-usuario.jsp")%>"><br /></li>
+                        <li><a href="<%=response.encodeURL("formulario-veiculo.jsp")%>"><br /></li>
+    					<li><a href="<%=response.encodeURL("formulario-evento.jsp")%>"><br /></li>
     				</ul>
 				</div>
 			</td>

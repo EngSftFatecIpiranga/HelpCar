@@ -8,17 +8,21 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script src="js/jquery.toastmessage.js" type="text/javascript"></script>
-<link href="css/jquery.toastmessage.css" rel="stylesheet" type="text/css" />   
+<link href="css/jquery.toastmessage.css" rel="stylesheet" type="text/css" />
+<link href="css/estilos.css" rel="stylesheet" type="text/css" />      
 <script src="js/mensagem.js" type="text/javascript"></script>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>HelpCar</title>
 </head>
+<jsp:include page="cabecalho.jsp"></jsp:include>
 <body>
 
+
+
 	<h2>Login Form</h2>
-	<s:form action ="login" method ="post">
+	<s:form action ="login" method ="post" id="corpo">
 
 		<s:textfield name ="condutor.login"  label="Login"/>
 		<s:password name ="condutor.senha"  label = "Senha" />
