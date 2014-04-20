@@ -5,10 +5,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.opensymphony.xwork2.validator.annotations.DateRangeFieldValidator;
-import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
-import com.opensymphony.xwork2.validator.annotations.Validations;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 
 
 /**
@@ -19,6 +18,7 @@ import com.opensymphony.xwork2.validator.annotations.Validations;
 @Table(name = "condutor")  
 @DiscriminatorValue ("c") //Tipo de usuario na tabela usuario
 @PrimaryKeyJoinColumn(name="id_usuario") 
+@OnDelete(action=OnDeleteAction.CASCADE)
 public class Condutor extends Usuario {
 	
 	

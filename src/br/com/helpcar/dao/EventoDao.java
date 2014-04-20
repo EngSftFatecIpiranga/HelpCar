@@ -1,5 +1,6 @@
 package br.com.helpcar.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
@@ -143,7 +144,25 @@ public class EventoDao {
 			return false;
 		} 
 	}
-	
+	/**
+	   * Método lista eventos de um usuario
+	   * @author Marcio Katsumata
+	   * @since 1.0
+	   * @version 1.0
+	   */
+
+	@SuppressWarnings("unchecked")
+	public List<Evento> listaEventoVencendo(Calendar data) {
+		session.beginTransaction();		
+		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.tipoEvento.alerta : alerta ").setCalendar("data", data).setBoolean("alerta", true);
+    	List  evento = query.list();
+      
+    	
+    	return evento;
+    
+      
+     
+	}
 	
 	
 }

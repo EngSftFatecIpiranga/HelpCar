@@ -22,7 +22,9 @@
 		<s:textfield name="veiculo.marca" label="Marca" required="true" /> <br />
 		<s:textfield name="veiculo.modelo" label="Modelo" required="true" /> <br />
 		<s:textfield name="veiculo.fabricacao" label="Ano do modelo" required="true"  /> <br />
-		<s:textfield name="veiculo.kmInicial" label="Quiometragem inicial" required="true"  /> <br />	
+		<s:textfield name="veiculo.kmInicial" label="Quilometragem inicial" required="true"  /> <br />	
+		<s:textfield name="veiculo.kmMediaDia" label="Quilometragem média por dia" required="true"  /> <br />	
+		<s:textfield name="veiculo.placa" label="Placa do veículo" required="true"  /> <br />	
 		<s:submit name= "cadastra" value="Cadastra" type="button" align="center" method="post" />
 	</s:form>
 

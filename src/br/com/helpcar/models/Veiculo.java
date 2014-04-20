@@ -53,6 +53,10 @@ public class Veiculo {
 	
 	@Column(name="km_atual")
 	private int kmAtual;
+	
+	@Column(name="km_media_dia")
+	private int kmMediaDia;
+
 
 
 	 @ManyToMany(cascade=CascadeType.ALL ,mappedBy="veiculo")
@@ -178,6 +182,14 @@ public class Veiculo {
 
 	public void setEvento(Set<Evento> evento) {
 		this.evento = evento;
+	}
+
+	public int getKmMediaDia() {
+		return kmMediaDia;
+	}
+
+	public void setKmMediaDia(int kmMediaDia) {
+		this.kmMediaDia = kmMediaDia;
 	}
 
 

@@ -135,5 +135,7 @@
 	<classpathentry kind="lib" path="lib/javaee-api-7.0.jar"/>
 	<classpathentry kind="lib" path="lib/org.osgi.foundation-1.0.0.jar"/>
 	<classpathentry kind="lib" path="lib/mail.jar"/>
+	<classpathentry kind="lib" path="lib/quartz-2.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/quartz-jobs-2.2.1.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

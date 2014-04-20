@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<jsp:include page="cabecalho.jsp"></jsp:include>
+
 
 <div class="fundo" align="center">
 
@@ -40,7 +40,6 @@
 		</table>
 </div> 
 
-<jsp:include page="rodape.jsp"></jsp:include>
 
 </body>
 </html>
