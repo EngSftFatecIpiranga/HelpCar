@@ -48,8 +48,8 @@ public class CadastraEventoAction {
 		tiposEvento = tipoEventoDao.listaTodos();
 		//sasasasasasasas
 		for (Evento evento: eventos){
-			Calendar calendario = evento.getDataEvento();
-			if(calendario != null ){
+
+			if(evento.getDataEvento() != null ){
 				evento.setTipoEvento(tiposEvento.get(index));
 				evento.setDataLimite(verificaVencimentoData(evento));
 				evento.setKmLimite(verificaVencimentoKm(evento));
@@ -125,15 +125,14 @@ public class CadastraEventoAction {
 
 		int kmEvento = 0;
 		int kmValidade =0;
-		int km;
+		int km1;
 		
 		kmEvento = evento.getKmEvento();
 		kmValidade = evento.getTipoEvento().getKmValidade();
-		km = kmEvento + kmValidade;
-		
+		km1 = kmEvento + kmValidade;
 
 
-		return km;
+		return km1;
 	}
 
 
