@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -12,6 +13,7 @@ import com.opensymphony.xwork2.ActionContext;
 import br.com.helpcar.dao.CondutorDao;
 import br.com.helpcar.models.Condutor;
 import br.com.helpcar.utils.EncriptadorSenha;
+
 
 public class LembrarSenhaAction {
 	private Condutor condutor;

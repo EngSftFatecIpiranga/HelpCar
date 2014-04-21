@@ -1,10 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ taglib prefix="s" uri="/struts-tags" %>  
+<%@ taglib prefix="j" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script src="js/jquery.toastmessage.js" type="text/javascript"></script>
+	<link href="css/jquery.toastmessage.css" rel="stylesheet" type="text/css" />
+	<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+	<script src="js/mensagem.js" type="text/javascript"></script>
+	<link type="text/css" href="css/custom-theme/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<link href="css/estilos.css" rel="stylesheet" type="text/css" /> 
+	<script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
 
-<head>
+	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -30,10 +43,10 @@
 				<div id="menu">
 			    	<ul>
     					<li><%response.sendRedirect("/HelpCar/index");%></li>
-                        <li><a href="<%=response.encodeURL("formulario-usuario.jsp")%>">Cadastro Usuário</li>
-                        <li><a href="<%=response.encodeURL("formulario-veiculo.jsp")%>">Cadastro Veículo</li>
-    					<li><a href="<%=response.encodeURL("formulario-evento.jsp")%>">Cadastro Manutenção</li>
-    					<li><a href="<%=response.encodeURL("????????.jsp")%>">Logout</li>
+                        <li><a href="<s:url action="cadastroForm"/>">Cadastro Usuário</li>
+                        <li><a href="<s:url action="cadastroVeiculoForm"/>">Cadastro Veículo</li>
+    					<li><a href="<s:url action="cadastroEventoForm"/>">Cadastro Manutenção</li>
+    					<li><a href="<s:url action="logout"/>">Logout</li>
     				</ul>
 				</div>
 			</td>

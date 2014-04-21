@@ -33,7 +33,7 @@ public class Condutor extends Usuario {
     @JoinTable(name="condutor_has_veiculos", joinColumns={@JoinColumn(name="id_usuario")}, inverseJoinColumns={@JoinColumn(name="id_veiculo")})
 	private List<Veiculo> veiculo;
 	
-
+	
 	public String getCnh() {
 		return cnh;
 	}

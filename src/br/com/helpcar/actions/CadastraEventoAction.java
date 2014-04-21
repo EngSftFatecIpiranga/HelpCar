@@ -1,5 +1,8 @@
 package br.com.helpcar.actions;
 import br.com.helpcar.utils.CalendarUtil;
+
+
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -7,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -18,18 +23,21 @@ import br.com.helpcar.models.TipoEvento;
 import br.com.helpcar.models.Veiculo;
 import br.com.helpcar.utils.EditaTexto;
 
+@ParentPackage("default")
 public class CadastraEventoAction {
 	private List<Evento> eventos;
+	private List<Evento> eventosAux;
 	private EventoDao eventoDao;
 	private TipoEventoDao tipoEventoDao;
 	private List<TipoEvento> tiposEvento;
 	private String msg;
+	private String tipo;
 	private Veiculo veiculo;
 
 	@Action(value="cadastraEvento", results={
 			@Result(name="ok", location ="menu.jsp"),
-			@Result(name="erro", type= "redirectAction",params={"actionName","cadatroEventoForm", "msg", "${msg}"})
-	})
+			@Result(name="erro", type= "redirectAction",params={"actionName","cadatroEventoForm", "msg", "${msg}"})},
+					interceptorRefs= { @InterceptorRef("seguranca")})
 	public String execute(){
 		
 		int index = 0;
@@ -38,20 +46,26 @@ public class CadastraEventoAction {
 		tipoEventoDao = new TipoEventoDao();
 		
 		tiposEvento = tipoEventoDao.listaTodos();
-
+		//sasasasasasasas
 		for (Evento evento: eventos){
-		
-			evento.setTipoEvento(tiposEvento.get(index));
-			evento.setDataLimite(verificaVencimentoData(evento));
-			evento.setKmLimite(verificaVencimentoKm(evento));
-			index++;
+			Calendar calendario = evento.getDataEvento();
+			if(calendario != null ){
+				evento.setTipoEvento(tiposEvento.get(index));
+				evento.setDataLimite(verificaVencimentoData(evento));
+				evento.setKmLimite(verificaVencimentoKm(evento));
+				index++;
+				eventosAux.add(evento);
+			}
 		}
+		eventos = eventosAux;
 		if(eventoDao.cadastraListaEventos(eventos, veiculo)){
+			setTipo("success");
 			setMsg ("Eventos registrados com sucesso!");
 			return "ok";
 		}
 		
-		setMsg ("Ocorreu um erro ao cadastrar o usuario, contacte o administrador");
+		setTipo("error");
+		setMsg ("Ocorreu um erro ao cadastrar o veiculo, contacte o administrador");
 		return "erro";
 	}
 
@@ -74,6 +88,18 @@ public class CadastraEventoAction {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
+	
+	
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 
 	public Calendar verificaVencimentoData(Evento evento){
 		Calendar data = null;

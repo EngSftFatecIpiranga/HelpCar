@@ -8,6 +8,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.helpcar.listener.HibernateListener;
 import br.com.helpcar.models.Evento;
@@ -53,7 +54,7 @@ public class EventoDao {
 	@SuppressWarnings("unchecked")
 	public List<Evento> listaTodos() throws Exception{
 		session.beginTransaction();	
-             return session.createCriteria(Evento.class).list();
+             return session.createCriteria(Evento.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
         
           
          
@@ -69,7 +70,7 @@ public class EventoDao {
 	@SuppressWarnings("unchecked")
 	public List<Evento> listaEventosVeiculo(Veiculo veiculo) {
 		session.beginTransaction();		
-    	Query query = session.createQuery("FROM Evento as e WHERE e.id_veiculo = :id_veiculo ").setInteger("id_veiculo", veiculo.getIdVeiculo());
+    	Query query = session.createQuery("FROM Evento as e WHERE e.id_veiculo = :id_veiculo and e.d_e_l_e_t = :d_e_l_e_t ").setInteger("id_veiculo", veiculo.getIdVeiculo()).setBoolean("d_e_l_e_t", false) 	;
       	List  evento = query.list();
         
       	
@@ -144,39 +145,7 @@ public class EventoDao {
 			return false;
 		} 
 	}
-	/**
-	   * Método lista eventos de um usuario
-	   * @author Marcio Katsumata
-	   * @since 1.0
-	   * @version 1.0
-	   */
 
-	@SuppressWarnings("unchecked")
-	public List<Evento> listaEventoVencendoQuinzenal(Calendar data) {
-		session.beginTransaction();	
-		data.add(Calendar.DAY_OF_MONTH,-15);
-		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.tipoEvento.alerta : alerta ").setCalendar("data_limite", data).setBoolean("alerta", true);
-    	List<Evento>  eventos = query.list();
-      
-    	
-    	return eventos;
-   
-     
-	}
-	
-	
-	@SuppressWarnings("unchecked")
-	public List<Evento> listaEventoVencendoSemanal(Calendar data) {
-		session.beginTransaction();	
-		data.add(Calendar.DAY_OF_MONTH,-15);
-		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.tipoEvento.alerta : alerta ").setCalendar("data_limite", data).setBoolean("alerta", true);
-    	List<Evento>  eventos = query.list();
-      
-    	
-    	return eventos;
-   
-     
-	}
 	
 	
 }

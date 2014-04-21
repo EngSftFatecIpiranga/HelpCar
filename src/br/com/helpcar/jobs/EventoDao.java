@@ -37,107 +37,7 @@ public class EventoDao extends HibernateUtil {
  		
 	}
 	
-	/**
-	   * Método lista eventos
-	   * @author Marcio Katsumata
-	   * @since 1.0
-	   * @version 1.0
-	   */
 
-	@SuppressWarnings("unchecked")
-	public List<Evento> listaTodos() throws Exception{
-		session.beginTransaction();	
-             return session.createCriteria(Evento.class).list();
-        
-          
-         
-	}
-	
-	/**
-	   * Método lista eventos de um usuario
-	   * @author Marcio Katsumata
-	   * @since 1.0
-	   * @version 1.0
-	   */
-
-	@SuppressWarnings("unchecked")
-	public List<Evento> listaEventosVeiculo(Veiculo veiculo) {
-		session.beginTransaction();		
-    	Query query = session.createQuery("FROM Evento as e WHERE e.id_veiculo = :id_veiculo ").setInteger("id_veiculo", veiculo.getIdVeiculo());
-      	List  evento = query.list();
-        
-      	
-      	return evento;
-      
-        
-       
-	}
-	
-	/**
-	   * Método para cadastrar evento
-	   * @param Veiculo (objeto)
-	   * @throws Exception
-	   * @author Marcio Katsumata
-	   * @since 1.0
-	   * @version 1.0
-	   */
-	public boolean cadastraEvento(Evento evento){
-
-		try{
-			session.beginTransaction();	
-			session.persist(evento);
-			session.getTransaction().commit();
-			return true;
-		}catch (Exception e) {
-			session.getTransaction().rollback();
-			return false;
-		} 
-	}
-	
-	/**
-	   * Método para cadastrar evento
-	   * @param Veiculo (objeto)
-	   * @throws Exception
-	   * @author Marcio Katsumata
-	   * @since 1.0
-	   * @version 1.0
-	   */
-	public boolean cadastraListaEventos(List<Evento> eventos, Veiculo veiculo){
-
-		try{
-			session.beginTransaction();	
-			for(Evento evento:eventos){
-				evento.setVeiculo(veiculo);
-				session.persist(evento);
-			}
-			session.getTransaction().commit();
-			return true;
-		}catch (Exception e) {
-			session.getTransaction().rollback();
-			return false;
-		} 
-	}
-	
-	/**
-	   * Método para cadastrar evento
-	   * @param Veiculo (objeto)
-	   * @throws Exception
-	   * @author Marcio Katsumata
-	   * @since 1.0
-	   * @version 1.0
-	   */
-	public boolean atualizaEvento(Evento evento){
-
-		try{
-			session.beginTransaction();	
-			session.update(evento);
-			session.getTransaction().commit();
-			return true;
-		}catch (Exception e) {
-			session.getTransaction().rollback();
-			return false;
-		} 
-	}
 	/**
 	   * Método lista eventos de um usuario
 	   * @author Marcio Katsumata
@@ -152,7 +52,7 @@ public class EventoDao extends HibernateUtil {
 		data.set(Calendar.HOUR_OF_DAY,0);
 		data.set(Calendar.MINUTE,0);
 		data.set(Calendar.SECOND,0);
-		Query query = session.createQuery("FROM Evento as e WHERE e.dataLimite = :data_limite ").setCalendar("data_limite", data);
+		Query query = session.createQuery("FROM Evento as e WHERE e.dataLimite = :data_limite and e.d_e_l_e_t = :d_e_l_e_t").setCalendar("data_limite", data).setBoolean("d_e_l_e_t", false);
     	List<Evento>  eventos = query.list();
       
     	
@@ -165,8 +65,11 @@ public class EventoDao extends HibernateUtil {
 	@SuppressWarnings("unchecked")
 	public List<Evento> listaEventoVencendoSemanal(Calendar data) {
 		session.beginTransaction();	
-		data.add(Calendar.DAY_OF_MONTH,-15);
-		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite ").setCalendar("data_limite", data);
+		data.add(Calendar.DAY_OF_MONTH,7);
+		data.set(Calendar.HOUR_OF_DAY,0);
+		data.set(Calendar.MINUTE,0);
+		data.set(Calendar.SECOND,0);
+		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.d_e_l_e_t = :d_e_l_e_t ").setCalendar("data_limite", data).setBoolean("d_e_l_e_t", false);
     	List<Evento>  eventos = query.list();
       
     	

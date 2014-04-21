@@ -53,7 +53,7 @@ public class VeiculoDao {
 	@SuppressWarnings("unchecked")
 	public List<Veiculo> listaTodos() throws Exception{
 
-               return session.createCriteria(Veiculo.class).list();
+               return session.createCriteria(Veiculo.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
           
             
            

@@ -7,7 +7,9 @@
 <title>HelpCar</title>
 </head>
 <body>
+<jsp:include page="cabecalho.jsp"></jsp:include>
 	<h2>Bem vindo, ${usuarioLogado.nome}</h2>
 	<h2>Carro: ${veiculoLogado.modelo}</h2>
+<jsp:include page="rodape.jsp"></jsp:include>
 </body>
 </html>

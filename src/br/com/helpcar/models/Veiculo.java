@@ -57,8 +57,6 @@ public class Veiculo {
 	@Column(name="km_media_dia")
 	private int kmMediaDia;
 
-
-
 	 @ManyToMany(cascade=CascadeType.ALL , fetch= FetchType.EAGER, mappedBy="veiculo")
 	private List<Condutor> condutor;
 	

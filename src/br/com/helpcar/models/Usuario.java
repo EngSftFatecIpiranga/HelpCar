@@ -19,7 +19,7 @@ import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 @Entity  
 @Table(name = "usuario",  uniqueConstraints = @UniqueConstraint(columnNames = "id_usuario"))  
-@Inheritance(strategy = InheritanceType.JOINED)// Garante que os atributos padrões da superclasse sejam mapeados nesta classe.  
+@Inheritance(strategy = InheritanceType.JOINED )// Garante que os atributos padrões da superclasse sejam mapeados nesta classe.  
 @DiscriminatorColumn(name = "tipo_usuario", discriminatorType=DiscriminatorType.STRING) //Tipo de usuario
 public class Usuario {
 	

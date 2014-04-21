@@ -57,7 +57,7 @@ public class CondutorDao  {
 	@SuppressWarnings("unchecked")
 	public List<Condutor> listaTodos() throws Exception{
 				session.beginTransaction();	
-               return session.createCriteria(Condutor.class).list();
+               return session.createCriteria(Condutor.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
           
             
            
@@ -78,10 +78,10 @@ public class CondutorDao  {
 		session.beginTransaction();	
 	    	if (campo.equals("nome")){
 	    		return (List<Condutor>) session.createCriteria(Condutor.class)
-	    	            .add(Restrictions.like(campo,valor, MatchMode.END));
+	    	            .add(Restrictions.like(campo,valor, MatchMode.END)).add(Restrictions.eq("d_e_l_e_t", false));
 			}else{
 				return (List<Condutor>) session.createCriteria(Condutor.class)
-	    	            .add(Restrictions.eq(campo,valor));
+	    	            .add(Restrictions.eq(campo,valor)).add(Restrictions.eq("d_e_l_e_t", false));
 			}
 	    	
 	}
@@ -98,7 +98,7 @@ public class CondutorDao  {
 	public boolean existeCondutor(Usuario usuario){
 		try{
 			session.beginTransaction();	
-      		Query query = session.createQuery("FROM Usuario as l WHERE l.login = :login AND l.senha = :senha").setString("senha", usuario.getSenha()).setString("login", usuario.getLogin());
+      		Query query = session.createQuery("FROM Usuario as l WHERE l.login = :login AND l.senha = :senha and l.d_e_l_e_t = :d_e_l_e_t ").setString("senha", usuario.getSenha()).setString("login", usuario.getLogin()).setBoolean("d_e_l_e_t", false);
       		List  usuarios = query.list();
       		boolean existeUsuario = (usuarios != null && !usuarios.isEmpty());
       		session.getTransaction().commit();
@@ -122,7 +122,7 @@ public class CondutorDao  {
 	public Condutor achaCondutor(Condutor condutor) {
 		session.beginTransaction();	
 		return (Condutor) session.createCriteria(Condutor.class)
-		            .add(Restrictions.eq("login",condutor.getLogin())).uniqueResult();
+		            .add(Restrictions.eq("login",condutor.getLogin())).add(Restrictions.eq("d_e_l_e_t", false)).uniqueResult();
     	
 
 

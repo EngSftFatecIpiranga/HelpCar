@@ -22,12 +22,13 @@
 	  br.com.helpcar.listener.HibernateListener
     </listener-class>
 </listener>
-
 <listener>
 	<listener-class>
-             br.com.helpcar.listener.TaskReminder
-	</listener-class>
+	  br.com.helpcar.listener.TaskReminder
+    </listener-class>
 </listener>
+
+
 
 <session-config>  
 	<session-timeout>3</session-timeout>  

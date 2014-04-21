@@ -2,6 +2,7 @@ package br.com.helpcar.actions;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import br.com.helpcar.dao.CondutorDao;
@@ -12,13 +13,12 @@ import br.com.helpcar.utils.EncriptadorSenha;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+
 public class LoginAction{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	//Hello
 	private Condutor condutor;
 	private CondutorDao condutorDao;
 	private List<Veiculo> veiculos;
@@ -87,7 +87,8 @@ public class LoginAction{
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
-
+	
+	//******* Getter e Setters da Toast(envio de mensagens JSP)*********//
 	public String getMsg() {
 		return msg;
 	}

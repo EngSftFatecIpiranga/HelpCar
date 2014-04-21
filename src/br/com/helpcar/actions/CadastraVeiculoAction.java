@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -15,7 +17,7 @@ import br.com.helpcar.listener.HibernateListener;
 import br.com.helpcar.models.Condutor;
 import br.com.helpcar.models.Veiculo;
 
-
+@ParentPackage("default")
 public class CadastraVeiculoAction {
 	
 	private Veiculo veiculo;
@@ -24,8 +26,8 @@ public class CadastraVeiculoAction {
 	private CondutorDao condutorDao;
 	@Action(value="cadastraVeiculo", results={
 			@Result(name="ok",type= "redirectAction", params={"actionName","cadastroEventoForm", "msg", "${msg}"}),
-			@Result(name="erro",type= "redirectAction", params={"actionName","cadatroVeiculoForm", "msg", "${msg}"})
-	})
+			@Result(name="erro",type= "redirectAction", params={"actionName","cadatroVeiculoForm", "msg", "${msg}"})},
+			interceptorRefs= { @InterceptorRef("seguranca") })
 	public String execute(){
 		veiculos = new ArrayList<Veiculo>();
 		condutorDao = new CondutorDao();

@@ -1,6 +1,7 @@
 package br.com.helpcar.actions;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -21,7 +22,7 @@ import br.com.helpcar.models.Usuario;
 import br.com.helpcar.utils.EncriptadorSenha;
 import br.com.helpcar.dao.CondutorDao;
 
-
+@ParentPackage("default")
 public class CadastraUsuarioAction {
 	/**
 	 * 

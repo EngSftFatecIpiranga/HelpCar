@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.helpcar.listener.HibernateListener;
 import br.com.helpcar.models.Evento;
@@ -53,7 +54,7 @@ public class TipoEventoDao {
 	@SuppressWarnings("unchecked")
 	public List<TipoEvento> listaTodos(){
 		session.beginTransaction();	
-        return session.createCriteria(TipoEvento.class).list();
+        return session.createCriteria(TipoEvento.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
         
           
          
