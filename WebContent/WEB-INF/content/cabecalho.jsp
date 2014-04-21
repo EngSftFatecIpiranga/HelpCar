@@ -29,10 +29,11 @@
 			<td>
 				<div id="menu">
 			    	<ul>
-    						<li><%response.sendRedirect("/HelpCar/index");%></li>
-                        <li><a href="<%=response.encodeURL("formulario-usuario.jsp")%>"><br /></li>
-                        <li><a href="<%=response.encodeURL("formulario-veiculo.jsp")%>"><br /></li>
-    					<li><a href="<%=response.encodeURL("formulario-evento.jsp")%>"><br /></li>
+    					<li><%response.sendRedirect("/HelpCar/index");%></li>
+                        <li><a href="<%=response.encodeURL("formulario-usuario.jsp")%>">Cadastro Usuário</li>
+                        <li><a href="<%=response.encodeURL("formulario-veiculo.jsp")%>">Cadastro Veículo</li>
+    					<li><a href="<%=response.encodeURL("formulario-evento.jsp")%>">Cadastro Manutenção</li>
+    					<li><a href="<%=response.encodeURL("????????.jsp")%>">Logout</li>
     				</ul>
 				</div>
 			</td>

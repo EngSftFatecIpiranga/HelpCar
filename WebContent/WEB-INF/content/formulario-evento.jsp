@@ -16,13 +16,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link type="text/css" href="css/custom-theme/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
 	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<link href="css/estilos.css" rel="stylesheet" type="text/css" /> 
 	<script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
 
 	<title>Cadastra Evento</title>
 </head>
+<jsp:include page="cabecalho.jsp"></jsp:include>
 <body>
-
-	<h2>Cadastro de eventos</h2>
+<div class="fundo" align="center">
+	<p id="subtitulo">Cadastro de eventos</p>
 	<c:set var="count" value="0" scope="page" />
 	<s:form action ="cadastraEvento" method ="post">
 		<c:forEach var="tipo"  items="${tiposEvento}">
@@ -37,7 +39,8 @@
 		<s:submit value ="cadastrar"  />
 		
 	</s:form>
-
+	</div>
+	<jsp:include page="rodape.jsp"></jsp:include>
 	
 </body>
 </html>

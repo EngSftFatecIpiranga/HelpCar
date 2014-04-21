@@ -7,6 +7,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script src="js/jquery.toastmessage.js" type="text/javascript"></script>
 <link href="css/jquery.toastmessage.css" rel="stylesheet" type="text/css" />   
+<link href="css/estilos.css" rel="stylesheet" type="text/css" /> 
  <script type="text/javascript" >
  window.onload=function showStickySuccessToast() {
 	 
@@ -32,6 +33,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>HelpCar</title>
 </head>
+
 <body>
 	<h2>Cadastro Usuário</h2>
 	<s:form action ="cadastraUsuario" method ="post" validate="true">
@@ -47,4 +49,5 @@
 		<s:submit name= "cadastra" value="Cadastra" type="button" align="center" method="post" />
 	</s:form>
 
+		</body>	
 </html>
