@@ -40,19 +40,19 @@
 		<input type="hidden" name="msg" id="msg" value="${msg}" />
 		<s:form action="cadastraUsuario" method="post" validate="true">
 			<s:textfield name="condutor.nome" label="Nome" required="true" />
-			<br />
+
 			<s:textfield name="condutor.email" label="Email" required="true" />
-			<br />
+
 
 			<s:textfield name="condutor.celular" label="Celular" required="true" />
-			<br />
+
 			<s:textfield name="condutor.cnh" label="CNH" required="true" />
-			<br />
+
 
 			<s:textfield name="condutor.login" label="Login:" required="true" />
-			<br />
+
 			<s:password name="condutor.senha" label="Senha" required="true" />
-			<br />
+
 
 			<s:submit name="cadastra" value="Cadastra" type="button"
 				align="center" method="post" />
