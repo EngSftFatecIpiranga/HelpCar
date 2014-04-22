@@ -126,7 +126,7 @@ public class EventoDao {
 	}
 	
 	/**
-	   * Método para cadastrar evento
+	   * Método para atualizar evento
 	   * @param Veiculo (objeto)
 	   * @throws Exception
 	   * @author Marcio Katsumata
@@ -147,5 +147,35 @@ public class EventoDao {
 	}
 
 	
-	
+	/**
+	   * Método lista eventos de um usuario
+	   * @author Marcio Katsumata
+	   * @param Veiculo (veiculo)
+	   * @param Calendar (dataInicial)
+	   * @param Calendar (dataFinal)
+	   * @since 1.0
+	   * @version 1.0
+	   */
+
+	@SuppressWarnings("unchecked")
+	public List<Evento> listaEventosVeiculo(Veiculo veiculo, Calendar dataInicial, Calendar dataFinal) {
+		dataInicial.set(Calendar.HOUR_OF_DAY,0);
+		dataInicial.set(Calendar.MINUTE,0);
+		dataInicial.set(Calendar.SECOND,0);
+		dataFinal.set(Calendar.HOUR_OF_DAY,0);
+		dataFinal.set(Calendar.MINUTE,0);
+		dataFinal.set(Calendar.SECOND,0);
+		session.beginTransaction();		
+		Query query = session.createQuery("FROM Evento as e WHERE e.id_veiculo = :idVeiculo AND "
+  			+" e.dataEvento between :dataInicial AND :dataFinal  AND " 
+  			+ "e.d_e_l_e_t = :d_e_l_e_t ").setInteger("idVeiculo", veiculo.getIdVeiculo()).setBoolean("d_e_l_e_t", false).
+  												setCalendar("dataInicial",dataInicial).setCalendar("dataFinal", dataFinal);
+    	List  eventos = query.list();
+      
+    	
+    	return eventos;
+    
+      
+     
+	}
 }

@@ -5,6 +5,9 @@
  
 <struts>
 	<package name="default" extends="struts-default">
+		<result-types>
+    		<result-type name="jasper" class="org.apache.struts2.views.jasperreports.JasperReportsResult"/>
+		</result-types>	
 		<interceptors>
 			<interceptor name="autorizador" class="br.com.helpcar.interceptor.AutorizadorInterceptor"/>
 			<interceptor-stack name="seguranca">
@@ -15,7 +18,8 @@
 		<global-results>
 			<result name="naoLogado">/WEB-INF/content/formulario-login.jsp</result>
 		</global-results>
-		
+
 	</package>
-	<constant name="struts.devMode" value="false" />	
+	<constant name="struts.devMode" value="false" />
+	
 </struts>

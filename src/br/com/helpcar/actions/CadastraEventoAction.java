@@ -3,8 +3,10 @@ import br.com.helpcar.utils.CalendarUtil;
 
 
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -39,14 +41,14 @@ public class CadastraEventoAction {
 			@Result(name="erro", type= "redirectAction",params={"actionName","cadatroEventoForm", "msg", "${msg}"})},
 					interceptorRefs= { @InterceptorRef("seguranca")})
 	public String execute(){
-		
+		eventosAux = new ArrayList<Evento>();
 		int index = 0;
 		veiculo = (Veiculo)ActionContext.getContext().getSession().get("veiculoLogado");
 		eventoDao = new EventoDao();
 		tipoEventoDao = new TipoEventoDao();
 		
 		tiposEvento = tipoEventoDao.listaTodos();
-		//sasasasasasasas
+
 		for (Evento evento: eventos){
 
 			if(evento.getDataEvento() != null ){

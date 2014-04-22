@@ -11,25 +11,7 @@
 <link href="css/jquery.toastmessage.css" rel="stylesheet"
 	type="text/css" />
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-	window.onload = function showStickySuccessToast() {
 
-		var msg = document.getElementById("msg").value;
-
-		if (msg != '') {
-			$().toastmessage('showToast', {
-				text : msg,
-				sticky : true,
-				position : 'top-center',
-				type : 'success',
-				closeText : '',
-				close : function() {
-					console.log("toast is closed ...");
-				}
-			});
-		}
-	};
-</script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>HelpCar</title>

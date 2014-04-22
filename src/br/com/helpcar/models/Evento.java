@@ -46,6 +46,10 @@ public class Evento {
 	@Column(name="data_evento")
 	private Calendar dataEvento;
 	
+
+	@Column(name="custo")
+	private double custo;
+	
 	@Column(name="km_evento")
 	private int kmEvento;
 	
@@ -135,6 +139,14 @@ public class Evento {
 
 	public void setD_e_l_e_t(boolean d_e_l_e_t) {
 		this.d_e_l_e_t = d_e_l_e_t;
+	}
+
+	public double getCusto() {
+		return custo;
+	}
+
+	public void setCusto(double custo) {
+		this.custo = custo;
 	}
 	
 	
