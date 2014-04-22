@@ -22,7 +22,7 @@
 	<s:form action ="cadastraUsuario" method ="post" validate="true">
 		<s:textfield name="condutor.nome" label="Nome"  /> <br />
 		<s:textfield name="condutor.email" label="Email" /> <br />
-		<sx:datetimepicker name="condutor.DataNascimento" label="Data Nascimento" displayFormat="dd/MM/yyyy" value=todayDate/>
+		<sx:datetimepicker name="condutor.DataNascimento" label="Data Nascimento" displayFormat="dd/MM/yyyy" value="todayDate"/>
 		<s:textfield name="condutor.celular"  label="Celular" /> <br />
 		<s:textfield name="condutor.cnh" label="CNH" /> <br />
 
