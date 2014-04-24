@@ -6,12 +6,16 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Help Car</title>
 </head>
-<jsp:include page="cabecalho.jsp"></jsp:include>
 <body>
-<h1>Ola!!!!!!!!</h1>
-<jsp:include page="rodape.jsp"></jsp:include>
+<jsp:include page="cabecalho.jsp"></jsp:include>
+	<div class="fundo" align="center">
+		<p id="subtitulo">Seja Benvindo</p>
+	</div>
+	<div id="conteudo" align="center">
+					<p>Esta é a página inicial do seu gerenciador de aplicativos.</p>
+					</div>
+	<jsp:include page="rodape.jsp"></jsp:include>
 </body>
-
 </html>
