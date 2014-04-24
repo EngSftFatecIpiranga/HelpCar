@@ -34,7 +34,7 @@ public class MailUtil{
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("helpcarfatec@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("acszan@gmail.com, rafael_legionario@hotmail.com, diegomelin@ig.com.br, valdirtime@yahoo.com.br, katsumatamarcio@yahoo.com.br"));
+				InternetAddress.parse(email));
 			
 			message.setSubject("Testando HelpCar");
 			message.setText(msg.toString());

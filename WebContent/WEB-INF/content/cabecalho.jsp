@@ -19,7 +19,7 @@
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
-
+<script src="js/jquery.toastmessage.js" type="text/javascript"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Help Car</title>
@@ -57,7 +57,7 @@
 									Veículo</li>
 							<li><a href="<s:url action="cadastroEventoForm"/>">Cadastro
 									Manutenção</li>
-							<li><a href="<s:url action="relatorioForm"/>">Relatório</li>
+							<li><a href="<s:url action="geraRelatorioForm"/>">Relatório</li>
 							<li><a href="<s:url action="logout"/>">Logout</li>
 						</ul>
 					</div>

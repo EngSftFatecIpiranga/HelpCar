@@ -21,28 +21,28 @@
 <body>
 <jsp:include page="cabecalho.jsp"></jsp:include>
 	<h2>Relatório de gastos</h2>
-	<h3>De <fmt:formatDate pattern="dd/MM/yyyy" value="${dataInicial.time}"/>  até  <fmt:formatDate pattern="dd/MM/yyyy" value="${dataFinal.time}"/></h3>
-	
+
 	<table>
 		<tr>
-			<td>Descricão:</td>
-			<td>Valor: </td>
-			<td>Data da manutenção: </td>
-			<td>Data da proxima manutenção : </td>
+			<td width="180">DESCRIÇÃO</td>
+			<td width="80"><CENTER>VALOR</CENTER> </td>
+			<td width="100"><CENTER>DATA MANUTENÇÃO</CENTER> </td>
+			<td width="120"><CENTER>PROXIMA MANUTENÇÃO</CENTER> </td>
 		</tr>
-	
+
 	<c:forEach var="evento"  items="${eventos}">
-				<tr>
+				<tr >
 					 <td>${evento.tipoEvento.nomeEvento}</td>
-					 <td>${evento.custo}</td>
-					 <td><fmt:formatDate pattern="dd/MM/yyyy" value="${evento.dataEvento.time}"/></td>
-					 <td><fmt:formatDate pattern="dd/MM/yyyy" value="${evento.dataLimite.time}" /></td>		
+					 <td><CENTER>R$ ${evento.custo}</CENTER></td>
+					 <td><CENTER><fmt:formatDate pattern="dd/MM/yyyy" value="${evento.dataEvento.time}"/></CENTER></td>
+					 <td><CENTER><fmt:formatDate pattern="dd/MM/yyyy" value="${evento.dataLimite.time}" /></CENTER></td>		
 				</tr>
 
 
 	</c:forEach>
 	</table>
-			Valor gasto no período: <c:out value="${total}" />
+			<br /><br />
+			<h3>Valor gasto no período: R$ <c:out value="${total}" /></h3>
 	<jsp:include page="rodape.jsp"></jsp:include>
 </body>	
 		

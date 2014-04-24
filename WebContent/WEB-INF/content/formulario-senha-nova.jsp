@@ -18,13 +18,15 @@
 <jsp:include page="cabecalho.jsp"></jsp:include>
 <body>
 	<div class="fundo" align="center">
-		<p id="subtitulo">Lembrar Senha</p>
+		<p id="subtitulo">Senha nova</p>
 		<p>Insira o e-mail cadastrado que enviaremos uma nova senha para o seu e-mail e</p>
 		<p>inclusive o seu login</p>
-		<s:form action="lembraSenha" method="post" validate="true">
+		<s:form action="senhaNova" method="post">
 			<input type="hidden" name="msg" id="msg" value="${msg}" />
 			<input type="hidden" name="tipo" id="msg" value="${msg}" />
-			<s:textfield name="condutor.email" label="Informe o e-mail cadastrado" required="true" />
+			<input type="hidden" name="condutor.login" id="condutor.login" value="${condutor.login}" />
+			<s:password name="condutor.senha" label="Informe a senha enviada ao seu e-mail" />
+			<s:password name="senhaNova" label="Insira a sua senha nova" />
 			<s:submit value="entrar" />
 		</s:form>
 	</div>

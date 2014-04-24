@@ -161,7 +161,7 @@ public class CondutorDao  {
 	   */
 	public boolean atualizaCondutor(Condutor condutor) {
 		try{
-			session.beginTransaction();	
+			session.getTransaction().begin();
 			session.update(condutor);
 			session.getTransaction().commit();
 			return true;
@@ -174,12 +174,12 @@ public class CondutorDao  {
 		
 	}
 	
-	public Condutor achaCondutor(String valor1, String campo1,String valor2, String campo2,String valor3, String campo3) {
+	public Condutor achaCondutor( String campo1, String valor1) {
 		try{
 			session.beginTransaction();	
-			return (Condutor) session.createCriteria(Condutor.class)
-			            .add(Restrictions.eq(campo1,valor1)).add(Restrictions.eq(campo2,valor2))
-			            .add(Restrictions.eq(campo3,valor3)).uniqueResult();
+			Condutor condutor = (Condutor) session.createCriteria(Condutor.class)
+            .add(Restrictions.eq(campo1,valor1)).uniqueResult();
+			return condutor;
 		
 		}catch (Exception e) {
 			session.getTransaction().rollback();

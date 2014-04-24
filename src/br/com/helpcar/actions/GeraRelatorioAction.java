@@ -36,7 +36,7 @@ public class GeraRelatorioAction {
 			interceptorRefs= { @InterceptorRef("seguranca") }) 	
 	public String execute(){
 		eventoDao = new EventoDao();
-		
+			
 			Veiculo veiculo = (Veiculo) ActionContext.getContext().getSession().get("veiculoLogado");
 		
 		eventos = eventoDao.listaEventosVeiculo(veiculo, dataInicial, dataFinal);

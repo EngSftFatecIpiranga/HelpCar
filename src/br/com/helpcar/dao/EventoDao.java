@@ -1,6 +1,7 @@
 package br.com.helpcar.dao;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
@@ -157,18 +158,48 @@ public class EventoDao {
 	   * @version 1.0
 	   */
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked"})
 	public List<Evento> listaEventosVeiculo(Veiculo veiculo, Calendar dataInicial, Calendar dataFinal) {
-		dataInicial.set(Calendar.HOUR_OF_DAY,0);
-		dataInicial.set(Calendar.MINUTE,0);
-		dataInicial.set(Calendar.SECOND,0);
-		dataFinal.set(Calendar.HOUR_OF_DAY,0);
-		dataFinal.set(Calendar.MINUTE,0);
-		dataFinal.set(Calendar.SECOND,0);
-		session.beginTransaction();		
-		Query query = session.createQuery("FROM Evento as e WHERE e.veiculo= :veiculo AND  e.dataEvento between :dataInicial AND :dataFinal  AND e.d_e_l_e_t = :d_e_l_e_t ").
-				setEntity("veiculo", veiculo).setBoolean("d_e_l_e_t", false).
-  							setCalendar("dataInicial",dataInicial).setCalendar("dataFinal", dataFinal);
+		Query query;
+		
+		try{
+			dataInicial.set(Calendar.HOUR_OF_DAY,0);
+			dataInicial.set(Calendar.MINUTE,0);
+			dataInicial.set(Calendar.SECOND,0);
+			dataFinal.set(Calendar.HOUR_OF_DAY,0);
+			dataFinal.set(Calendar.MINUTE,0);
+			dataFinal.set(Calendar.SECOND,0);
+			query = session.createQuery("FROM Evento as e WHERE e.veiculo= :veiculo AND  e.dataEvento between :dataInicial AND :dataFinal  AND e.d_e_l_e_t = :d_e_l_e_t ").
+					setEntity("veiculo", veiculo).setBoolean("d_e_l_e_t", false).
+	  						setCalendar("dataInicial",dataInicial).setCalendar("dataFinal", dataFinal);
+		}catch(Exception e){
+			try{
+				dataInicial.set(Calendar.HOUR_OF_DAY,0);
+				dataInicial.set(Calendar.MINUTE,0);
+				dataInicial.set(Calendar.SECOND,0);
+				query = session.createQuery("FROM Evento as e WHERE e.veiculo= :veiculo AND  e.dataEvento >= :dataInicial  AND e.d_e_l_e_t = :d_e_l_e_t ").
+						setEntity("veiculo", veiculo).setBoolean("d_e_l_e_t", false).
+	  						setCalendar("dataInicial",dataInicial);
+			}catch (Exception e2){
+				try{
+					dataFinal.set(Calendar.HOUR_OF_DAY,0);
+					dataFinal.set(Calendar.MINUTE,0);
+					dataFinal.set(Calendar.SECOND,0);
+					query = session.createQuery("FROM Evento as e WHERE e.veiculo= :veiculo AND  e.dataEvento <= :dataFinal  AND e.d_e_l_e_t = :d_e_l_e_t ").
+							setEntity("veiculo", veiculo).setBoolean("d_e_l_e_t", false).
+			  						setCalendar("dataFinal",dataFinal);
+				}catch (Exception e3){
+					query = session.createQuery("FROM Evento as e WHERE e.veiculo= :veiculo AND  e.d_e_l_e_t = :d_e_l_e_t ").
+							setEntity("veiculo", veiculo).setBoolean("d_e_l_e_t", false);
+				}
+			}
+		}
+
+
+		session.beginTransaction();
+		
+	
+			
     	List  eventos = query.list();
       
     	
