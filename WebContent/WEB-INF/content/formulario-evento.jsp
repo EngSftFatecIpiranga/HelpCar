@@ -5,10 +5,7 @@
 <%@ taglib prefix="j" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
-
-
 <head>
 <title>Cadastra Evento</title>
 </head>
@@ -19,15 +16,12 @@
 		<c:set var="count" value="0" scope="page" />
 		<s:form action="cadastraEvento" method="post">
 			<c:forEach var="tipo" items="${tiposEvento}">
-
 				<input type="hidden" name="eventos[${count}].tipoEvento"
 					value="${tipo}" />
 				<input type="hidden" name="eventos[${count}].veiculo"
 					value="${veiculoLogado}" />
-
 				<table class="form.${tipo.nomeEvento}" width="900px">
 					<tr>
-
 						<td width="100px"><img width="70" height="70" alt=""
 							src="imagens/${tipo.nomeEvento}.png"></td>
 						<td width="100px">${tipo.nomeEvento}</td>
@@ -39,20 +33,17 @@
 								id="eventos[${count}].dataEvento" classe="${count}" /> <br />
 							<c:set var="count" value="${count + 1}" scope="page" />
 					</tr>
-
+					</c:forEach>
 				</table>
-
-			</c:forEach>
-			<table align="center">
-				<tr>
-					<td><p>
-							<s:submit value="cadastrar" />
-						</p></td>
-				</tr>
-			</table>
+				<table align="center">
+					<tr>
+						<td><p>
+								<s:submit value="cadastrar" />
+							</p></td>
+					</tr>
+				</table>
 		</s:form>
 	</div>
 	<jsp:include page="rodape.jsp"></jsp:include>
-
 </body>
 </html>
