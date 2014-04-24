@@ -166,10 +166,9 @@ public class EventoDao {
 		dataFinal.set(Calendar.MINUTE,0);
 		dataFinal.set(Calendar.SECOND,0);
 		session.beginTransaction();		
-		Query query = session.createQuery("FROM Evento as e WHERE e.id_veiculo = :idVeiculo AND "
-  			+" e.dataEvento between :dataInicial AND :dataFinal  AND " 
-  			+ "e.d_e_l_e_t = :d_e_l_e_t ").setInteger("idVeiculo", veiculo.getIdVeiculo()).setBoolean("d_e_l_e_t", false).
-  												setCalendar("dataInicial",dataInicial).setCalendar("dataFinal", dataFinal);
+		Query query = session.createQuery("FROM Evento as e WHERE e.veiculo= :veiculo AND  e.dataEvento between :dataInicial AND :dataFinal  AND e.d_e_l_e_t = :d_e_l_e_t ").
+				setEntity("veiculo", veiculo).setBoolean("d_e_l_e_t", false).
+  							setCalendar("dataInicial",dataInicial).setCalendar("dataFinal", dataFinal);
     	List  eventos = query.list();
       
     	

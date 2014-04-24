@@ -8,7 +8,74 @@
 	</repositories>
  
 	<dependencies>
- 
+		<dependency> 
+			<groupId>jfree</groupId> 
+			<artifactId>jcommon</artifactId> 
+			<version>${jcommon.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>jfree</groupId> 
+			<artifactId>jfreechart</artifactId> 
+			<version>${jfreechart.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>commons-beanutils</groupId> 
+			<artifactId>commons-beanutils</artifactId> 
+			<version>${commons-beanutils.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>commons-collections</groupId> 
+			<artifactId>commons-collections</artifactId> 
+			<version>${commons-collections.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>commons-digester</groupId> 
+			<artifactId>commons-digester</artifactId> 
+			<version>${commons-digester.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>commons-logging</groupId> 
+			<artifactId>commons-logging</artifactId> 
+			<version>${commons-logging.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>com.keypoint</groupId> 
+			<artifactId>png-encoder</artifactId> 
+			<version>${png-encoder.version}</version> 
+		</dependency> 
+		<!-- itext -->
+ 		<dependency> 
+			<groupId>com.lowagie</groupId> 
+			<artifactId>itext</artifactId> 
+			<version>${itext.version}</version> 
+		</dependency> 
+		<!-- jasperreports -->
+		<dependency> 
+			<groupId>net.sf.jasperreports</groupId> 
+			<artifactId>jasperreports</artifactId> 
+			<version>${jasperreports.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>jaxen</groupId> 
+			<artifactId>jaxen</artifactId> 
+			<version>${jaxen.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>jfree</groupId> 
+			<artifactId>jcommon</artifactId> 
+			<version>${jcommon.version}</version> 
+		</dependency> 
+		<dependency> 
+			<groupId>jfree</groupId> 
+			<artifactId>jfreechart</artifactId> 
+			<version>${jfreechart.version}</version> 
+		</dependency> 
+		<!-- jasperreports -->
+		<dependency> 
+			<groupId>antlr</groupId> 
+			<artifactId>antlr</artifactId> 
+			<version>${antlr.version}</version> 
+		</dependency> 
 		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
