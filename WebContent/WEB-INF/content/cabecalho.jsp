@@ -53,6 +53,7 @@
 								%>
 							</li>
 							<li><a href="<s:url action="cadastroForm"/>">Início</li>
+							<li><a href="<s:url action="atualizaCondutorForm"/>">Atualizar Dados</li>
 							<li><a href="<s:url action="cadastroVeiculoForm"/>">Cadastro
 									Veículo</li>
 							<li><a href="<s:url action="cadastroEventoForm"/>">Cadastro

@@ -31,7 +31,7 @@ body {
 	background-color: #000;
 	color: #FFF;
 	text-decoration: center;
-	padding: 1px 30px;
+	padding: 2px 15px;
 	float: left;
 }
 
@@ -119,4 +119,42 @@ margin:10px;
 	
 td.alinha {
 	text-align: center;
+}
+
+#tabrel{
+
+	text-decoration: center;
+	border-collapse: separate;
+	font-family:verdana, arial, tahoma, sans-serif;
+	text-transform: uppercase;
+    padding: 4px 8px;
+}
+
+
+#reltitulo{
+	font-family:verdana, arial, tahoma, sans-serif;
+	font-size:16px;
+	text-align:center;
+		font-weight: bold;
+}
+
+#tabrel tbody tr{
+	border-right: 1px solid #95B3D7;
+}
+
+#tabrel tr{
+	border-right: 1px solid #95B3D7;
+}
+
+#tabrel tbody tr:nth-child(odd) {
+	background: #DBE5F0;
+}
+
+#tabrel tbody tr:nth-child(even){
+	background: green;
+}
+
+#tabrel thead {
+	background: #4F81BD;
+	color: #FFF;
 }
