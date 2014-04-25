@@ -20,10 +20,9 @@
 			<s:password name="condutor.senha" label="Senha" />
 			<s:submit value="entrar" />
 		</s:form>
-		<h5>
-			<a href="http://localhost:8080/HelpCar/cadastroForm">Clique aqui
-				para fazer seu cadastro</a>
-		</h5>
+	<h5><a href="http://localhost:8080/HelpCar/lembraSenhaForm">Esqueci minha senha</h5>
+			<h5><a href="http://localhost:8080/HelpCar/cadastroForm">Clique aqui
+				para fazer seu cadastro</h5>
 	</div>
 	<jsp:include page="rodape.jsp"></jsp:include>
 </body>
