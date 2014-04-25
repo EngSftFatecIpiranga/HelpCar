@@ -33,13 +33,7 @@ public class CondutorDao  {
 	   */
 	
 	public CondutorDao(){
-		session = null;
-	       
-    	sessionFactory = 
-   	         (SessionFactory) ServletActionContext.getServletContext()
-                        .getAttribute(HibernateListener.KEY_NAME);
-    
-   		session = sessionFactory.openSession();
+
    		
    		
 	}
@@ -56,9 +50,19 @@ public class CondutorDao  {
 	   */
 	@SuppressWarnings("unchecked")
 	public List<Condutor> listaTodos() throws Exception{
+		session = null;
+	       
+    	sessionFactory = 
+   	         (SessionFactory) ServletActionContext.getServletContext()
+                        .getAttribute(HibernateListener.KEY_NAME);
+    
+   		session = sessionFactory.openSession();
+		try{
 				session.beginTransaction();	
                return session.createCriteria(Condutor.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
-          
+		}finally{
+			session.close();
+		}
             
            
 	}
@@ -75,7 +79,16 @@ public class CondutorDao  {
 	   */
 	@SuppressWarnings("unchecked")
 	public List<Condutor> achaListaCondutores(String valor, String campo) throws Exception{
+		session = null;
+	       
+    	sessionFactory = 
+   	         (SessionFactory) ServletActionContext.getServletContext()
+                        .getAttribute(HibernateListener.KEY_NAME);
+    
+   		session = sessionFactory.openSession();
+		try{
 		session.beginTransaction();	
+		
 	    	if (campo.equals("nome")){
 	    		return (List<Condutor>) session.createCriteria(Condutor.class)
 	    	            .add(Restrictions.like(campo,valor, MatchMode.END)).add(Restrictions.eq("d_e_l_e_t", false));
@@ -83,7 +96,9 @@ public class CondutorDao  {
 				return (List<Condutor>) session.createCriteria(Condutor.class)
 	    	            .add(Restrictions.eq(campo,valor)).add(Restrictions.eq("d_e_l_e_t", false));
 			}
-	    	
+		}finally{
+			session.close();
+		}
 	}
 	
 	/**
@@ -96,12 +111,20 @@ public class CondutorDao  {
 	   * @version 1.0
 	   */
 	public boolean existeCondutor(Usuario usuario){
+		session = null;
+	       
+    	sessionFactory = 
+   	         (SessionFactory) ServletActionContext.getServletContext()
+                        .getAttribute(HibernateListener.KEY_NAME);
+    
+   		session = sessionFactory.openSession();
 		try{
 			session.beginTransaction();	
       		Query query = session.createQuery("FROM Usuario as l WHERE l.login = :login AND l.senha = :senha and l.d_e_l_e_t = :d_e_l_e_t ").setString("senha", usuario.getSenha()).setString("login", usuario.getLogin()).setBoolean("d_e_l_e_t", false);
       		List  usuarios = query.list();
       		boolean existeUsuario = (usuarios != null && !usuarios.isEmpty());
       		session.getTransaction().commit();
+      		session.close();
       		return existeUsuario;
 		}catch (Exception e){
 			return false;
@@ -120,12 +143,22 @@ public class CondutorDao  {
 	   * @version 1.0
 	   */
 	public Condutor achaCondutor(Condutor condutor) {
+		session = null;
+	       
+    	sessionFactory = 
+   	         (SessionFactory) ServletActionContext.getServletContext()
+                        .getAttribute(HibernateListener.KEY_NAME);
+    
+   		session = sessionFactory.openSession();
+		try{
 		session.beginTransaction();	
 		return (Condutor) session.createCriteria(Condutor.class)
 		            .add(Restrictions.eq("login",condutor.getLogin())).add(Restrictions.eq("d_e_l_e_t", false)).uniqueResult();
     	
 
-
+		}finally{
+			session.close();
+		}
 		
 	}
 	
@@ -138,11 +171,18 @@ public class CondutorDao  {
 	   * @version 1.0
 	   */
 	public boolean cadastraCondutor(Condutor condutor){
-
+		session = null;
+	       
+    	sessionFactory = 
+   	         (SessionFactory) ServletActionContext.getServletContext()
+                        .getAttribute(HibernateListener.KEY_NAME);
+    
+   		session = sessionFactory.openSession();
 		try{
 			session.beginTransaction();	
 			session.persist(condutor);
 			session.getTransaction().commit();
+			session.close();
 			return true;
 			
 		}catch (Exception e) {
@@ -160,21 +200,38 @@ public class CondutorDao  {
 	   * @version 1.0
 	   */
 	public boolean atualizaCondutor(Condutor condutor) {
+		session = null;
+	       
+    	sessionFactory = 
+   	         (SessionFactory) ServletActionContext.getServletContext()
+                        .getAttribute(HibernateListener.KEY_NAME);
+    
+   		session = sessionFactory.openSession();
+		
 		try{
-			session.getTransaction().begin();
+			session.beginTransaction();
 			session.update(condutor);
 			session.getTransaction().commit();
+			session.close();
 			return true;
 		
 		}catch (Exception e) {
 			session.getTransaction().rollback();
 			System.out.println(e);
+	
 			return false;
 		} 
 		
 	}
 	
 	public Condutor achaCondutor( String campo1, String valor1) {
+		session = null;
+	       
+    	sessionFactory = 
+   	         (SessionFactory) ServletActionContext.getServletContext()
+                        .getAttribute(HibernateListener.KEY_NAME);
+    
+   		session = sessionFactory.openSession();
 		try{
 			session.beginTransaction();	
 			Condutor condutor = (Condutor) session.createCriteria(Condutor.class)
@@ -185,6 +242,8 @@ public class CondutorDao  {
 			session.getTransaction().rollback();
 			System.out.println(e);
 
+		}finally{
+			session.close();
 		}
 		return null; 
 		

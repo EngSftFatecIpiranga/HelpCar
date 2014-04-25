@@ -46,6 +46,7 @@ public class LembrarSenhaAction {
 			condutor.setSenha(EncriptadorSenha.encripta(senhaProvisoria+""));
 			condutorDao.atualizaCondutor(condutor);
 			MailUtil.sendMail(condutor.getEmail(), escreveMsg(condutor));
+			ActionContext.getContext().getSession().put("usuarioTemp", condutor);
 			setMsg("Foi enviado com sucesso ao seu e-mail a sua senha provisoria");
 			setTipo("success");
 			return "ok";
@@ -67,18 +68,28 @@ public class LembrarSenhaAction {
 		
 		condutorDao = new CondutorDao();
 		
+		condutor = (Condutor) ActionContext.getContext().getSession().get("usuarioTemp");
 		
 		if(condutorDao.existeCondutor(condutor)){
 			condutor.setSenha(EncriptadorSenha.encripta(senhaNova));
 			if(condutorDao.atualizaCondutor(condutor)){
 				setMsg("Senha atualizada com sucesso");
 				setTipo ("success");
+				ActionContext.getContext().getSession().remove("usuarioTemp");
 				return "ok";
+			}else{
+				setMsg("Erro ao atualizar a senha");
+				setTipo ("error");
+				ActionContext.getContext().getSession().remove("usuarioTemp");
+				return "erro";
 			}
+		}else{
+			setMsg("Usuário inválido!");
+			setTipo ("error");
+			ActionContext.getContext().getSession().remove("usuarioTemp");
+			return "erro";
 		}
-		setMsg("Erro ao atualizar a senha");
-		setTipo ("error");
-		return "erro";
+		
 
 		
 	}
