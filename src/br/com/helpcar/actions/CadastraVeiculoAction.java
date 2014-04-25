@@ -33,6 +33,11 @@ public class CadastraVeiculoAction {
 		condutorDao = new CondutorDao();
 		condutor = new Condutor();
 		condutor = (Condutor)ActionContext.getContext().getSession().get("usuarioLogado");
+		try{
+			veiculos = condutor.getVeiculo();
+		}catch(Exception e){
+			System.out.println(e);
+		}
 		veiculos.add(veiculo);
 		condutor.setVeiculo(veiculos);
 		if(condutorDao.atualizaCondutor(condutor)){

@@ -1,4 +1,6 @@
 package br.com.helpcar.actions;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -6,6 +8,7 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import br.com.helpcar.dao.CondutorDao;
+import br.com.helpcar.dao.VeiculoDao;
 import br.com.helpcar.models.Condutor;
 import br.com.helpcar.models.Veiculo;
 import br.com.helpcar.utils.EncriptadorSenha;
@@ -26,14 +29,15 @@ public class LoginAction{
 	private String msg;
 	private String tipo;
 	
+	@SuppressWarnings({ "rawtypes", "unused", "unchecked" })
 	@Action(value="login", results={
 			@Result(name="ok", location ="menu.jsp"),
 			@Result(name="cadastreVeiculo", type= "redirectAction", params={"actionName","cadastroVeiculoForm", "msg", "${msg}","tipo","${tipo}"}),
-			@Result(name="escolha",  type= "redirectAction", params={"actionName","escolhaVeiculoForm", "msg", "${msg}","tipo","${tipo}"}),
+			@Result(name="escolha",  type= "redirectAction", params={"actionName","escolheVeiculoForm", "msg", "${msg}","tipo","${tipo}" }),
 			@Result(name="invalido", type= "redirectAction", params={"actionName","loginForm", "msg", "${msg}","tipo","${tipo}"})
 	})
 	public String execute() throws Exception{
-		
+
 		condutorDao = new CondutorDao();
 		condutor.setLogin(condutor.getLogin());
 		condutor.setSenha(EncriptadorSenha.encripta(condutor.getSenha()));
@@ -41,7 +45,10 @@ public class LoginAction{
 			condutor = condutorDao.achaCondutor(condutor);
 			ActionContext.getContext().getSession().put("usuarioLogado", condutor);
 			veiculos = condutor.getVeiculo();
-		
+			
+			veiculos = new ArrayList(new HashSet(veiculos)); 
+			
+			
 			if(veiculos.size()==1){
 				ActionContext.getContext().getSession().put("veiculoLogado", veiculos.get(0));
 				return "ok";

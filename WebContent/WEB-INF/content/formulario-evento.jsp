@@ -15,7 +15,7 @@
 		<p id="subtitulo">Cadastro de eventos</p>
 		<c:set var="count" value="0" scope="page" />
 		<s:form action="cadastraEvento" method="post">
-			<c:forEach var="tipo" items="${tiposEvento}">
+			<c:forEach var="tipo" items="${tiposEvento}" >
 				<input type="hidden" name="eventos[${count}].tipoEvento"
 					value="${tipo}" />
 				<input type="hidden" name="eventos[${count}].veiculo"

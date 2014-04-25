@@ -29,7 +29,7 @@
 
 		<s:textfield name="condutor.login" label="Login:"  />
 		<s:password name="condutor.senha" label="Senha"  />
-		<input type="hidden" name="msg" id="msg"value="${msg}" />
+
 		<s:submit name= "cadastra" value="Cadastra" type="button" align="center" method="post" />
 	</s:form>
 	</div>

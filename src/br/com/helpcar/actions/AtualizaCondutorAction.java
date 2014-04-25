@@ -18,23 +18,24 @@ public class AtualizaCondutorAction {
 	private String tipo; 
 
 	@Action(value="atualizaCondutor", results={
-			@Result(name="ok", location ="menu.jsp"),
-			@Result(name="erro", location ="menu.jsp")},
+			@Result(name="ok", type = "redirectAction", params={"actionName", "index", "msg", "${msg}", "tipo", "${tipo}"})},
 			interceptorRefs= { @InterceptorRef("seguranca") })
 	public String execute(){
 		
 		condutorDao = new CondutorDao();
 		try{
-			condutor = (Condutor)ActionContext.getContext().getSession().get("usuarioLogado");
 			condutorDao.atualizaCondutor(condutor);
+			ActionContext.getContext().getSession().remove("usuarioLogado");
+			ActionContext.getContext().getSession().put("usuarioLogado",condutor);
 			setMsg("Usuario alterado com sucesso!");
 			setTipo("success");
+			
 			return "ok";
 		}catch (Exception e){
 			System.out.println(e);
 			setMsg("Erro ao atualizado o usuario!");
 			setTipo("error");
-			return "erro";
+			return "ok";
 		}
 		
 	}

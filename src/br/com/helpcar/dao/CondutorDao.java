@@ -150,15 +150,15 @@ public class CondutorDao  {
                         .getAttribute(HibernateListener.KEY_NAME);
     
    		session = sessionFactory.openSession();
-		try{
+		
 		session.beginTransaction();	
-		return (Condutor) session.createCriteria(Condutor.class)
-		            .add(Restrictions.eq("login",condutor.getLogin())).add(Restrictions.eq("d_e_l_e_t", false)).uniqueResult();
+		Condutor condutorAux = (Condutor) session.createCriteria(Condutor.class)
+	            .add(Restrictions.eq("login",condutor.getLogin())).add(Restrictions.eq("d_e_l_e_t", false)).uniqueResult();
+		session.close();
+		return condutorAux;
     	
 
-		}finally{
-			session.close();
-		}
+	
 		
 	}
 	
