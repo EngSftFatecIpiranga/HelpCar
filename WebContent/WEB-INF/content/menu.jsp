@@ -8,8 +8,11 @@
 </head>
 <body>
 <jsp:include page="cabecalho.jsp"></jsp:include>
+	<div class="fundo" align="center">
+	<p id="subtitulo">Help Car</p><br/>
 	<h2>Bem vindo, ${usuarioLogado.nome}</h2>
-	<h2>Carro: ${veiculoLogado.modelo}</h2>
+	<h2>Carro: ${veiculoLogado.modelo}</h2><br/><br/>
 <jsp:include page="rodape.jsp"></jsp:include>
+</div>
 </body>
 </html>

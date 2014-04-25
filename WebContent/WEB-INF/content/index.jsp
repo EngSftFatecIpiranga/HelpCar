@@ -9,8 +9,10 @@
 <title>Help Car</title>
 </head>
 <body>
+	<div class="fundo" align="center">
 	<% 
  	 response.sendRedirect("/HelpCar/index");
 	%>
+	</div>
 </body>
 </html>
