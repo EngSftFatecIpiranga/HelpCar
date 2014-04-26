@@ -16,7 +16,8 @@
     	for (var i=0;i<aChk.length;i++){ 
         	if (aChk[i].checked == true){ 
         		alert(aChk[i].value);
-        		document.getElementById('escolha'+aChk[i].id).value = aChk[i].id;
+        		var campo = aChk[i].id+"";
+        		document.getElementById('escolha.'+campo).value = aChk[i].id;
         		document.formEscolhe.submit();
         	}  else {
             	// CheckBox Não Marcado... Faça alguma outra coisa...
@@ -29,13 +30,13 @@
 
 	<div class="fundo" align="center">
 		<p id="subtitulo">Escolha o carro:</p>
-		<s:form action ="escolheVeiculo" name ="formEscolhe" method ="post" validate="true">
+		<s:form action ="escolheVeiculo" id= "formEscolhe" name ="formEscolhe" method ="post">
 			<c:forEach var="veiculo" items="${listaVeiculos}" >
 				<br><input type="radio" id="${veiculo.idVeiculo}" name="item" value="${veiculo.nome}"> <c:out value="${veiculo.nome}" />
-				
+				<input type="hidden" name="idVeiculo"  id="escolha.${veiculo.idVeiculo}" value="" />
 			</c:forEach>
 		<br><input type="button" value="Escolhe" onclick="verificaChecks()">
-		<input type="hidden" id="escolha.${veiculo.idVeiculo }" value="" />
+
 	</s:form>
 	</div>
 	<jsp:include page="rodape.jsp"></jsp:include>

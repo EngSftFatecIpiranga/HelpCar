@@ -71,7 +71,7 @@ public class EventoDao {
 	@SuppressWarnings("unchecked")
 	public List<Evento> listaEventosVeiculo(Veiculo veiculo) {
 		session.beginTransaction();		
-    	Query query = session.createQuery("FROM Evento as e WHERE e.id_veiculo = :id_veiculo and e.d_e_l_e_t = :d_e_l_e_t ").setInteger("id_veiculo", veiculo.getIdVeiculo()).setBoolean("d_e_l_e_t", false) 	;
+    	Query query = session.createQuery("FROM Evento as e WHERE e.veiculo = :veiculo and e.d_e_l_e_t = :d_e_l_e_t ").setEntity("veiculo", veiculo).setBoolean("d_e_l_e_t", false) 	;
       	List  evento = query.list();
         
       	
@@ -146,7 +146,26 @@ public class EventoDao {
 			return false;
 		} 
 	}
+	/**
+	   * Método para atualizar evento
+	   * @param Veiculo (objeto)
+	   * @throws Exception
+	   * @author Marcio Katsumata
+	   * @since 1.0
+	   * @version 1.0
+	   */
+	public Evento buscaPorId(int idEvento){
 
+		try{
+			session.beginTransaction();	
+			Evento evento = (Evento) session.createCriteria(Evento.class).add(Restrictions.eq("d_e_l_e_t", false)).add(Restrictions.eq("idEvento",idEvento)).uniqueResult();
+			session.getTransaction().commit();
+			return evento;
+		}catch (Exception e) {
+			session.getTransaction().rollback();
+			return null;
+		} 
+	}
 	
 	/**
 	   * Método lista eventos de um usuario

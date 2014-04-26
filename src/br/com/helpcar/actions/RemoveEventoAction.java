@@ -13,19 +13,50 @@ public class RemoveEventoAction {
 
 	private Evento evento;
 	private EventoDao eventoDao;
+	private int idEvento;
+	private String msg;
+	private String tipo;
+	
 	@Action(value="removeEvento", results={
-			@Result(name="ok", location ="menu.jsp"),
-			@Result(name="erro", location="formulario-evento.jsp")},
+			@Result(name="ok",type="httpheader", params= {"status", "200"})},
 			interceptorRefs= { @InterceptorRef("seguranca") })	
 	public String execute(){
-		evento.setD_e_l_e_t(true);
 		eventoDao = new EventoDao();
+		evento= eventoDao.buscaPorId(idEvento);
+		evento.setD_e_l_e_t(true);
+
 		if(eventoDao.atualizaEvento(evento)){
-			
+			setMsg("Manutenção removida com sucesso!");
+			setTipo("success");
 			return "ok";
 		}
-		
-		return "erro";
+
+		return "ok";
 	}
 
+	public int getIdEvento() {
+		return idEvento;
+	}
+
+	public void setIdEvento(int idEvento) {
+		this.idEvento = idEvento;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 }
+

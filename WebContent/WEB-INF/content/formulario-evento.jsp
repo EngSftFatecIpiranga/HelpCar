@@ -15,33 +15,29 @@
 		<p id="subtitulo">Cadastro de eventos</p>
 		<c:set var="count" value="0" scope="page" />
 		<s:form action="cadastraEvento" method="post">
-			<c:forEach var="tipo" items="${tiposEvento}" >
+			<c:forEach var="tipo" items="${tiposEvento}">
 				<input type="hidden" name="eventos[${count}].tipoEvento"
 					value="${tipo}" />
 				<input type="hidden" name="eventos[${count}].veiculo"
 					value="${veiculoLogado}" />
-				<table class="form.${tipo.nomeEvento}" width="900px">
-					<tr>
-						<td width="100px"><img width="70" height="70" alt=""
-							src="imagens/${tipo.nomeEvento}.png"></td>
-						<td width="100px">${tipo.nomeEvento}</td>
-						<td width="100px"><p>Km Evento:</p> <input type="text"
-							name="eventos[${count}].kmEvento" /></td>
-						<td width="100px"><p>Custo:</p> <input type="text"
-							name="eventos[${count}].custo" />
-						<td width="100px"><p>Data Evento:</p> <j:campoData
-								id="eventos[${count}].dataEvento" classe="${count}" /> <br />
-							<c:set var="count" value="${count + 1}" scope="page" />
-					</tr>
-					</c:forEach>
-				</table>
-				<table align="center">
-					<tr>
-						<td><p>
-								<s:submit value="cadastrar" />
-							</p></td>
-					</tr>
-				</table>
+				<img width="70" height="70" alt=""
+					src="imagens/${tipo.nomeEvento}.png">${tipo.nomeEvento}
+					Km Evento:<input type="text" name="eventos[${count}].kmEvento" />
+Custo:
+				<input type="text" name="eventos[${count}].custo" />
+						Data Evento:<j:campoData id="eventos[${count}].dataEvento"
+					classe="${count}" />
+				<c:set var="count" value="${count + 1}" scope="page" />
+				<br />
+			</c:forEach>
+
+			<table align="center">
+				<tr>
+					<td><p>
+							<s:submit value="cadastrar" />
+						</p></td>
+				</tr>
+			</table>
 		</s:form>
 	</div>
 	<jsp:include page="rodape.jsp"></jsp:include>

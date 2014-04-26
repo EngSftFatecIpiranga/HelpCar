@@ -42,6 +42,12 @@ public class VeiculoDao {
 	   */
 	
 	public VeiculoDao(){
+
+   		
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Veiculo> listaTodos() throws Exception{
 		session = null;
 	       
     	sessionFactory = 
@@ -49,14 +55,10 @@ public class VeiculoDao {
                         .getAttribute(HibernateListener.KEY_NAME);
     
    		session = sessionFactory.openSession();
-   		session.beginTransaction();	
-   		
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<Veiculo> listaTodos() throws Exception{
-
-               return session.createCriteria(Veiculo.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
+   		session.beginTransaction();
+   		List veiculos = session.createCriteria(Veiculo.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
+   		session.close();
+        return veiculos;
           
             
            
@@ -73,9 +75,17 @@ public class VeiculoDao {
 	public boolean cadastraVeiculo(Veiculo veiculo){
 
 		try{
-
+			session = null;
+		       
+	    	sessionFactory = 
+	   	         (SessionFactory) ServletActionContext.getServletContext()
+	                        .getAttribute(HibernateListener.KEY_NAME);
+	    
+	   		session = sessionFactory.openSession();
+	   		session.beginTransaction();	
 			session.persist(veiculo);
 			session.getTransaction().commit();
+			session.close();
 			return true;
 		}catch (Exception e) {
 			session.getTransaction().rollback();
@@ -83,6 +93,40 @@ public class VeiculoDao {
  			
  			
  		} 
+	}
+	
+	
+	/**
+	   * Método para cadastrar veiculo
+	   * @param Veiculo (objeto)
+	   * @throws Exception
+	   * @author Marcio Katsumata
+	   * @since 1.0
+	   * @version 1.0
+	   */
+	public Veiculo achaVeiculo(int  valor){
+
+		try{
+			Veiculo veiculo ;
+			session = null;
+		       
+	    	sessionFactory = 
+	   	         (SessionFactory) ServletActionContext.getServletContext()
+	                        .getAttribute(HibernateListener.KEY_NAME);
+	    
+	   		session = sessionFactory.openSession();
+	   		session.beginTransaction();	
+	   		 veiculo = (Veiculo) session.createCriteria(Veiculo.class).add(Restrictions.eq("d_e_l_e_t", false)).add(Restrictions.eq("idVeiculo", valor)).uniqueResult();
+
+			session.getTransaction().commit();
+			session.close();
+			return veiculo;
+		}catch (Exception e) {
+			session.getTransaction().rollback();
+			return null;
+			
+			
+		} 
 	}
 	
 
