@@ -22,13 +22,13 @@
 					value="${veiculoLogado}" />
 				<img width="70" height="70" alt=""
 					src="imagens/${tipo.nomeEvento}.png">${tipo.nomeEvento}
-							Km Evento:<input type="text" name="eventos[${count}].kmEvento" />
-Custo:</p>
+					Km Evento:<input type="text" name="eventos[${count}].kmEvento" />
+Custo:
 				<input type="text" name="eventos[${count}].custo" />
 						Data Evento:<j:campoData id="eventos[${count}].dataEvento"
 					classe="${count}" />
 				<c:set var="count" value="${count + 1}" scope="page" />
-
+				<br />
 			</c:forEach>
 
 			<table align="center">
