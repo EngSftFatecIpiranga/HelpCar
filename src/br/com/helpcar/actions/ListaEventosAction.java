@@ -21,7 +21,7 @@ public class ListaEventosAction {
 	private List<Evento> eventos; 
 	private EventoDao eventoDao;
 	private Veiculo veiculo;
-	@Action(value="listaEventoForm", results={
+	@Action(value="listaEventosForm", results={
 			@Result(name="ok", location ="lista-eventos.jsp")},
 			interceptorRefs= { @InterceptorRef("seguranca") }) 
 	public String execute() {
