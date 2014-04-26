@@ -31,8 +31,9 @@ body {
 	background-color: #000;
 	color: #FFF;
 	text-decoration: center;
-	padding: 2px 15px;
+	padding: 2px 30px;
 	float: left;
+	text-align: center;
 }
 
 #menu ul li a:hover {
