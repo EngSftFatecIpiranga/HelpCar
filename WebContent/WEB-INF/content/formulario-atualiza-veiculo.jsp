@@ -22,7 +22,7 @@
 <body>
 	<div class="fundo" align="center">
 		<p id="subtitulo">Atualiza Veiculo</p>
-	<s:form action ="cadastraVeiculo" method ="post" validate="true">
+	<s:form action ="atualizaVeiculo" method ="post" validate="true">
 		<c:set var="veiculo" value="${veiculoLogado}" scope="request" />
 		<s:textfield name="veiculo.nome" label="Nome veiculo" value="%{#request.veiculo.nome}"  required="true" />
 		<s:textfield name="veiculo.marca" label="Marca" value="%{#request.veiculo.marca}"  required="true" />
