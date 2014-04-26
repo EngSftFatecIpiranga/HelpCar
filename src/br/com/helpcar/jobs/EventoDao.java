@@ -71,7 +71,7 @@ public class EventoDao extends HibernateUtil {
 		data.set(Calendar.HOUR_OF_DAY,0);
 		data.set(Calendar.MINUTE,0);
 		data.set(Calendar.SECOND,0);
-		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.d_e_l_e_t = :d_e_l_e_t ").setCalendar("data_limite", data).setBoolean("d_e_l_e_t", false);
+		Query query = session.createQuery("FROM Evento as e WHERE e.dataLimite = :data_limite and e.d_e_l_e_t = :d_e_l_e_t ").setCalendar("data_limite", data).setBoolean("d_e_l_e_t", false);
     	List<Evento>  eventos = query.list();
       
     	session.close();
