@@ -7,6 +7,7 @@ import java.util.List;
 
 
 
+
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -14,6 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+
 
 
 
@@ -127,6 +129,39 @@ public class VeiculoDao {
 			
 			
 		} 
+	}
+	
+	/**
+	   * Método para cadastrar usuarios
+	   * @param Usuario (objeto)
+	   * @throws Exception
+	   * @author Marcio Katsumata
+	   * @since 1.0
+	   * @version 1.0
+	   */
+	public boolean atualizaVeiculo(Veiculo veiculo) {
+		session = null;
+	       
+  	sessionFactory = 
+ 	         (SessionFactory) ServletActionContext.getServletContext()
+                      .getAttribute(HibernateListener.KEY_NAME);
+  
+ 		session = sessionFactory.openSession();
+		
+		try{
+			session.beginTransaction();
+			session.update(veiculo);
+			session.getTransaction().commit();
+			session.close();
+			return true;
+		
+		}catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println(e);
+	
+			return false;
+		} 
+		
 	}
 	
 
