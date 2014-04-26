@@ -21,12 +21,13 @@
 				<input type="hidden" name="eventos[${count}].veiculo"
 					value="${veiculoLogado}" />
 				<img width="70" height="70" alt=""
-							src="imagens/${tipo.nomeEvento}.png">${tipo.nomeEvento}
-							Km Evento:</p> <input type="text"
-							name="eventos[${count}].kmEvento" />
-Custo:</p> <input type="text" name="eventos[${count}].custo" />
-						Data Evento:</p> <j:campoData id="eventos[${count}].dataEvento" classe="${count}" /></td>
-						<c:set var="count" value="${count + 1}" scope="page" />
+					src="imagens/${tipo.nomeEvento}.png">${tipo.nomeEvento}
+							Km Evento:<input type="text" name="eventos[${count}].kmEvento" />
+Custo:</p>
+				<input type="text" name="eventos[${count}].custo" />
+						Data Evento:<j:campoData id="eventos[${count}].dataEvento"
+					classe="${count}" />
+				<c:set var="count" value="${count + 1}" scope="page" />
 
 			</c:forEach>
 
