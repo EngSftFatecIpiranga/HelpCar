@@ -14,7 +14,7 @@
 		<p id="subtitulo">Seja Benvindo</p>
 	</div>
 	<div id="conteudo" align="center">
-					<p>Esta é a página inicial do seu gerenciador de aplicativos.</p>
+					<p>Esta é a página inicial do seu gerenciador de manutenções.</p>
 					</div>
 	<jsp:include page="rodape.jsp"></jsp:include>
 </body>
