@@ -1,5 +1,7 @@
 package br.com.helpcar.actions;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -18,13 +20,14 @@ public class CadastroEventoFormAction {
 	private TipoEventoDao tipoEventoDao;
 	private Veiculo veiculo;
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Action(value="cadastroEventoForm", results={
 			@Result(name="ok", location ="formulario-evento.jsp")},
 			interceptorRefs= { @InterceptorRef("seguranca") }) 
 	public String execute() {
 		tipoEventoDao = new TipoEventoDao();
 
-		setTiposEvento(tipoEventoDao.listaTodos());
+		tiposEvento = new ArrayList(new HashSet(tipoEventoDao.listaTodos()));
 		
 		return "ok";
 	}

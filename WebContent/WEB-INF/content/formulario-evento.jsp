@@ -15,20 +15,21 @@
 		<p id="subtitulo">Cadastro de eventos</p>
 		<c:set var="count" value="0" scope="page" />
 		<s:form action="cadastraEvento" method="post">
+
 			<c:forEach var="tipo" items="${tiposEvento}">
-				<input type="hidden" name="eventos[${count}].tipoEvento"
-					value="${tipo}" />
-				<input type="hidden" name="eventos[${count}].veiculo"
-					value="${veiculoLogado}" />
-				<img width="70" height="70" alt=""
-					src="imagens/${tipo.nomeEvento}.png">${tipo.nomeEvento}
-					Km Evento:<input type="text" name="eventos[${count}].kmEvento" />
-Custo:
-				<input type="text" name="eventos[${count}].custo" />
-						Data Evento:<j:campoData id="eventos[${count}].dataEvento"
-					classe="${count}" />
+				<input type="hidden" name="eventos[${count}].tipoEvento" value="${tipo}" />
+				<input type="hidden" name="eventos[${count}].veiculo"value="${veiculoLogado}" />
+				<table class="form.${tipo.nomeEvento}" width="900px">
+
+					<tr>
+						<td width="30%"><img width="70" height="70" alt="" src="imagens/${tipo.nomeEvento}.png"></td>
+						<td width="50%"><B><CENTER><font face="Arial" size="4">${tipo.nomeEvento}</font></CENTER></B></td>
+						<td width="100%">Km Evento:<input type="text" name="eventos[${count}].kmEvento" /></td>
+                    	<td width="100%">Custo:<input type="text" name="eventos[${count}].custo" /></td>
+						<td width="100%">Data Evento:<j:campoData id="eventos[${count}].dataEvento" classe="${count}" /></td>
+				</tr>
+				</table>
 				<c:set var="count" value="${count + 1}" scope="page" />
-				<br />
 			</c:forEach>
 
 			<table align="center">

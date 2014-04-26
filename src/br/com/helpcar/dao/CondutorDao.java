@@ -7,6 +7,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.infinispan.loaders.modifications.Commit;
@@ -110,7 +111,7 @@ public class CondutorDao  {
 	   * @since 1.0
 	   * @version 1.0
 	   */
-	public boolean existeCondutor(Usuario usuario){
+	public boolean existeCondutor(Condutor condutor){
 		session = null;
 	       
     	sessionFactory = 
@@ -120,8 +121,11 @@ public class CondutorDao  {
    		session = sessionFactory.openSession();
 		try{
 			session.beginTransaction();	
-      		Query query = session.createQuery("FROM Usuario as l WHERE l.login = :login AND l.senha = :senha and l.d_e_l_e_t = :d_e_l_e_t ").setString("senha", usuario.getSenha()).setString("login", usuario.getLogin()).setBoolean("d_e_l_e_t", false);
-      		List  usuarios = query.list();
+			Criterion rest1= Restrictions.eq("login", condutor.getLogin());
+			Criterion rest2= Restrictions.eq("cnh", condutor.getCnh());
+	
+			List  usuarios= session.createCriteria(Condutor.class).add(Restrictions.or(rest1,rest2)).list();
+     
       		boolean existeUsuario = (usuarios != null && !usuarios.isEmpty());
       		session.getTransaction().commit();
       		session.close();

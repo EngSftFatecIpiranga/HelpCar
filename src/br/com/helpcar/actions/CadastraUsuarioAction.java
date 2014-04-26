@@ -31,7 +31,7 @@ public class CadastraUsuarioAction {
 	private Condutor condutor;
 	private CondutorDao condutorDao;
 	private String msg;
-	
+	private String tipo;
 	
 	
 	@Action(value="cadastraUsuario", results={
@@ -46,13 +46,16 @@ public class CadastraUsuarioAction {
 			if(!condutorDao.existeCondutor(condutor)){
 				condutorDao.cadastraCondutor(condutor);
 				setMsg("Usuario cadastrado com sucesso!");
+				setTipo("success");
 				
 			}else{
 				setMsg("Nao foi possivel cadastrar este usuario, já existe um usuario com este cadastro!");
+				setTipo("notice");
 				return "erro";
 			}
 		}catch(Exception e){
 			setMsg("Não foi possível cadastrar este usuário. Contate o administrador do sistema."+e);
+			setTipo("error");
 			System.out.println(e);
 			return "erro";
 		}
@@ -73,6 +76,14 @@ public class CadastraUsuarioAction {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 	
