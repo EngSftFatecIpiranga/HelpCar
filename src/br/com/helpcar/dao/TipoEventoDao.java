@@ -33,13 +33,7 @@ public class TipoEventoDao {
 	   */
 	
 	public TipoEventoDao(){
-		session = null;
-	       
-  	sessionFactory = 
- 	         (SessionFactory) ServletActionContext.getServletContext()
-                      .getAttribute(HibernateListener.KEY_NAME);
-  
- 		session = sessionFactory.openSession();
+
  		
  		
 	}
@@ -53,8 +47,18 @@ public class TipoEventoDao {
 
 	@SuppressWarnings("unchecked")
 	public List<TipoEvento> listaTodos(){
+		session = null;
+	       
+	  	sessionFactory = 
+	 	         (SessionFactory) ServletActionContext.getServletContext()
+	                      .getAttribute(HibernateListener.KEY_NAME);
+	  
+	 	session = sessionFactory.openSession();
 		session.beginTransaction();	
-        return session.createCriteria(TipoEvento.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
+		List tipoEvento = session.createCriteria(TipoEvento.class).add(Restrictions.eq("d_e_l_e_t", false)).list();
+		
+		session.close();
+        return tipoEvento;
         
           
          

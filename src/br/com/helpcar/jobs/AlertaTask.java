@@ -55,5 +55,17 @@ public class AlertaTask extends TimerTask {
 				
 			}
 		}
+		
+		eventos = eventoDao.listaEventoVencendoSemanal(Calendar.getInstance());
+		
+		for (Evento evento : eventos){
+			condutores= evento.getVeiculo().getCondutor();
+			for (Condutor condutor: condutores){
+				if(MailUtil.sendMail(condutor.getEmail(), escreveMsg(condutor, evento))){
+					System.out.println("E-mail enviado com sucesso para "+condutor.getNome());
+				}
+				
+			}
+		}
 	}
 } 

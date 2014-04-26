@@ -33,7 +33,7 @@ public class EventoDao extends HibernateUtil {
 	   */
 	
 	public EventoDao(){
-		session = getSession();
+		
  		
 	}
 	
@@ -47,6 +47,7 @@ public class EventoDao extends HibernateUtil {
 
 	@SuppressWarnings("unchecked")
 	public List<Evento> listaEventoVencendoQuinzenal(Calendar data) {
+		session = getSession();
 		session.beginTransaction();	
 		data.add(Calendar.DAY_OF_MONTH,15);
 		data.set(Calendar.HOUR_OF_DAY,0);
@@ -55,7 +56,7 @@ public class EventoDao extends HibernateUtil {
 		Query query = session.createQuery("FROM Evento as e WHERE e.dataLimite = :data_limite and e.d_e_l_e_t = :d_e_l_e_t").setCalendar("data_limite", data).setBoolean("d_e_l_e_t", false);
     	List<Evento>  eventos = query.list();
       
-    	
+    	session.close();
     	return eventos;
    
      
@@ -64,6 +65,7 @@ public class EventoDao extends HibernateUtil {
 	
 	@SuppressWarnings("unchecked")
 	public List<Evento> listaEventoVencendoSemanal(Calendar data) {
+		session = getSession();
 		session.beginTransaction();	
 		data.add(Calendar.DAY_OF_MONTH,7);
 		data.set(Calendar.HOUR_OF_DAY,0);
@@ -72,7 +74,7 @@ public class EventoDao extends HibernateUtil {
 		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.d_e_l_e_t = :d_e_l_e_t ").setCalendar("data_limite", data).setBoolean("d_e_l_e_t", false);
     	List<Evento>  eventos = query.list();
       
-    	
+    	session.close();
     	return eventos;
    
      

@@ -87,19 +87,23 @@ public class CondutorDao  {
                         .getAttribute(HibernateListener.KEY_NAME);
     
    		session = sessionFactory.openSession();
-		try{
-		session.beginTransaction();	
 		
+		session.beginTransaction();	
+		List condutores ;
 	    	if (campo.equals("nome")){
-	    		return (List<Condutor>) session.createCriteria(Condutor.class)
+	    		condutores =  (List<Condutor>) session.createCriteria(Condutor.class)
 	    	            .add(Restrictions.like(campo,valor, MatchMode.END)).add(Restrictions.eq("d_e_l_e_t", false));
+	    		session.close();
+	    		return condutores;
 			}else{
-				return (List<Condutor>) session.createCriteria(Condutor.class)
-	    	            .add(Restrictions.eq(campo,valor)).add(Restrictions.eq("d_e_l_e_t", false));
+				condutores = (List<Condutor>) session.createCriteria(Condutor.class)
+	            .add(Restrictions.eq(campo,valor)).add(Restrictions.eq("d_e_l_e_t", false));
+				session.close();
+				return condutores;
 			}
-		}finally{
-			session.close();
-		}
+		
+			
+		
 	}
 	
 	/**
@@ -191,7 +195,7 @@ public class CondutorDao  {
 			
 		}catch (Exception e) {
 			session.getTransaction().rollback();
-   		
+			session.close();
    			return false;
    		} 
 	}
@@ -222,7 +226,7 @@ public class CondutorDao  {
 		}catch (Exception e) {
 			session.getTransaction().rollback();
 			System.out.println(e);
-	
+			session.close();
 			return false;
 		} 
 		
@@ -237,20 +241,20 @@ public class CondutorDao  {
     
    		session = sessionFactory.openSession();
 		try{
+			
 			session.beginTransaction();	
 			Condutor condutor = (Condutor) session.createCriteria(Condutor.class)
             .add(Restrictions.eq(campo1,valor1)).uniqueResult();
+			
+			session.close();
 			return condutor;
 		
 		}catch (Exception e) {
 			session.getTransaction().rollback();
-			System.out.println(e);
-
-		}finally{
 			session.close();
+			System.out.println(e);
+			return null;
 		}
-		return null; 
-		
 	}
 	
 	

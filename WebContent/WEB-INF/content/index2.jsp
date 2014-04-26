@@ -11,7 +11,7 @@
 <body>
 <jsp:include page="cabecalho.jsp"></jsp:include>
 	<div class="fundo" align="center">
-		<p id="subtitulo">Seja Benvindo</p>
+		<p id="subtitulo">Seja Bem vindo</p>
 	</div>
 	<div id="conteudo" align="center">
 					<p>Esta é a página inicial do seu gerenciador de manutenções.</p>

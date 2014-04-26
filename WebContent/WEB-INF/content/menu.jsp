@@ -9,10 +9,15 @@
 <body>
 <jsp:include page="cabecalho.jsp"></jsp:include>
 	<div class="fundo" align="center">
-	<p id="subtitulo">Help Car</p><br/>
-	<h2>Bem vindo, ${usuarioLogado.nome}</h2>
-	<h2>Carro: ${veiculoLogado.modelo}</h2><br/><br/>
-<jsp:include page="rodape.jsp"></jsp:include>
-</div>
+		<p id="subtitulo">Seja Bem vindo, ${usuarioLogado.nome}</p>
+	</div>
+	<div id="conteudo" align="center">
+					<p>Esta é a página inicial do seu gerenciador de manutenções.</p>
+	</div>
+	<input type="hidden" name="msg" id="msg" value="${msg}" />
+	<input type="hidden" name="tipo" id="tipo" value="${tipo}" />				
+	<jsp:include page="rodape.jsp"></jsp:include>
+	
 </body>
+
 </html>

@@ -91,6 +91,7 @@ public class VeiculoDao {
 			return true;
 		}catch (Exception e) {
 			session.getTransaction().rollback();
+			session.close();
 			return false;
  			
  			
@@ -125,6 +126,7 @@ public class VeiculoDao {
 			return veiculo;
 		}catch (Exception e) {
 			session.getTransaction().rollback();
+			session.close();
 			return null;
 			
 			
@@ -158,7 +160,7 @@ public class VeiculoDao {
 		}catch (Exception e) {
 			session.getTransaction().rollback();
 			System.out.println(e);
-	
+			session.close();
 			return false;
 		} 
 		
