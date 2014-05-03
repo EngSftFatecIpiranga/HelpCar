@@ -30,6 +30,7 @@ public class CadastraEventoAction {
 	private List<Evento> eventos;
 	private List<Evento> eventosAux;
 	private EventoDao eventoDao;
+	private TipoEvento tipoEvento;
 	private TipoEventoDao tipoEventoDao;
 	private List<TipoEvento> tiposEvento;
 	private String msg;
@@ -37,7 +38,7 @@ public class CadastraEventoAction {
 	private Veiculo veiculo;
 
 	@Action(value="cadastraEvento", results={
-			@Result(name="ok", location ="menu.jsp"),
+			@Result(name="ok", type= "redirectAction",params={"actionName","listaEventosForm", "msg", "${msg}", "tipo","${tipo}"}),
 			@Result(name="erro", type= "redirectAction",params={"actionName","cadatroEventoForm", "msg", "${msg}"})},
 					interceptorRefs= { @InterceptorRef("seguranca")})
 	public String execute(){
@@ -47,15 +48,16 @@ public class CadastraEventoAction {
 		eventoDao = new EventoDao();
 		tipoEventoDao = new TipoEventoDao();
 		
-		tiposEvento = tipoEventoDao.listaTodos();
+		
 
 		for (Evento evento: eventos){
 
 			if(evento.getDataEvento() != null ){
-				evento.setTipoEvento(tiposEvento.get(index));
+				tipoEvento = tipoEventoDao.buscaPorId(evento.getIdAux());
+				evento.setTipoEvento(tipoEvento);
 				evento.setDataLimite(verificaVencimentoData(evento));
 				evento.setKmLimite(verificaVencimentoKm(evento));
-				index++;
+
 				eventosAux.add(evento);
 			}
 		}

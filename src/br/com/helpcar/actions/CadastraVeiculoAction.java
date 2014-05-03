@@ -24,6 +24,8 @@ public class CadastraVeiculoAction {
 	private List<Veiculo> veiculos ;
 	private Condutor condutor;
 	private CondutorDao condutorDao;
+	private String msg;
+	private String tipo;
 	@Action(value="cadastraVeiculo", results={
 			@Result(name="ok",type= "redirectAction", params={"actionName","cadastroEventoForm", "msg", "${msg}"}),
 			@Result(name="erro",type= "redirectAction", params={"actionName","cadatroVeiculoForm", "msg", "${msg}"})},
@@ -41,6 +43,10 @@ public class CadastraVeiculoAction {
 		veiculos.add(veiculo);
 		condutor.setVeiculo(veiculos);
 		if(condutorDao.atualizaCondutor(condutor)){
+			ActionContext.getContext().getSession().remove("veiculoLogado");
+			ActionContext.getContext().getSession().put("veiculoLogado", veiculo);
+			setMsg("Veiculo cadastrado com sucesso");
+			setTipo("success");
 			return "ok";
 		}
 		
@@ -57,6 +63,18 @@ public class CadastraVeiculoAction {
 	}
 	public void setCondutor(Condutor condutor) {
 		this.condutor = condutor;
+	}
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 	

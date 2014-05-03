@@ -37,8 +37,12 @@
 						<tr>
 							<td><img src="imagens/logoprincipal.png" width="300"
 								height="130" /></td>
-							<td width="600"><p class="titulo">Help Car - Gerenciador
-									de Manutenções</p></td>
+								
+							<td width="600"><p class="titulo">Help Car - Gerenciador de Manutenções</p></td>
+						</tr>
+						<tr>
+							<td>Usuário: <c:out value="${usuarioLogado.nome}"/></td>
+							<td>Veículo: <c:out value="${veiculoLogado.nome}"/></td>
 						</tr>
 					</table>
 				</td>
@@ -55,6 +59,7 @@
 							<li><a href="<s:url action="cadastroForm"/>">Início</li>
 							<li><a href="<s:url action="atualizaCondutorForm"/>">Atualizar
 									Dados</li>
+							<li><a href="<s:url action="escolheVeiculoForm"/>">Alterar Veículo</li>
 							<li><a href="<s:url action="cadastroVeiculoForm"/>">Cadastro
 									Veículo</li>
 							<li><a href="<s:url action="atualizaVeiculoForm"/>">Atualizar
@@ -71,7 +76,8 @@
 			</tr>
 		</table>
 	</div>
-
+	<input type="hidden" name="msg" id="msg" value="${msg}" />
+	<input type="hidden" name="tipo" id="tipo" value="${tipo}" />
 
 </body>
 </html>

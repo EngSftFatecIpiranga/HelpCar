@@ -39,7 +39,7 @@ public class TipoEvento {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tipoEvento")
 	private Set<Evento> evento;
 	
-	
+
 	@Column(name="d_e_l_e_t" , columnDefinition ="tinyint default 0")
 	private boolean d_e_l_e_t;
 	
@@ -110,6 +110,9 @@ public class TipoEvento {
 	public void setD_e_l_e_t(boolean d_e_l_e_t) {
 		this.d_e_l_e_t = d_e_l_e_t;
 	}
+
+
+
 	
 	
 

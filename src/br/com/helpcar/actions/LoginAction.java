@@ -41,7 +41,7 @@ public class LoginAction{
 		condutorDao = new CondutorDao();
 		condutor.setLogin(condutor.getLogin());
 		condutor.setSenha(EncriptadorSenha.encripta(condutor.getSenha()));
-		if(condutorDao.existeCondutor(condutor)){
+		if(condutorDao.existeLoginCondutor(condutor)){
 			condutor = condutorDao.achaCondutor(condutor);
 			ActionContext.getContext().getSession().put("usuarioLogado", condutor);
 			veiculos = condutor.getVeiculo();

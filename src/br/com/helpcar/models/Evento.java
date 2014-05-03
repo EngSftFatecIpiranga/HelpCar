@@ -66,7 +66,8 @@ public class Evento {
 	@Column(name="d_e_l_e_t" , columnDefinition ="tinyint default 0")
 	private boolean d_e_l_e_t;
 	
-
+	private int idAux;
+	
 	public int getIdEvento() {
 		return idEvento;
 	}
@@ -147,6 +148,16 @@ public class Evento {
 
 	public void setCusto(double custo) {
 		this.custo = custo;
+	}
+	
+	public int getIdAux() {
+		return idAux;
+	}
+
+
+
+	public void setIdAux(int idAux) {
+		this.idAux = idAux;
 	}
 	
 	

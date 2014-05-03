@@ -1,0 +1,15 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+          "http://struts.apache.org/dtds/xwork-validator-1.0.dtd">  
+<validators>
+    <field name="condutor.nome">
+        <field-validator type="requiredstring">
+            <message>You must enter a name</message>
+        </field-validator>
+    </field>
+    <field name="dataNascimento">
+        <field-validator type="int">
+            <param name="min">18</param>
+            <message>Só maiores de 18 anos podem se cadastrar</message>
+        </field-validator>
+    </field>
+</validators>

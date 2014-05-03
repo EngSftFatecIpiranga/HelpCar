@@ -64,6 +64,34 @@ public class TipoEventoDao {
          
 	}
 	
+	
+	/**
+	   * Método lista eventos
+	   * @author Marcio Katsumata
+	   * @since 1.0
+	   * @version 1.0
+	   */
+
+	@SuppressWarnings("unchecked")
+	public TipoEvento buscaPorId(int id){
+		session = null;
+	       
+	  	sessionFactory = 
+	 	         (SessionFactory) ServletActionContext.getServletContext()
+	                      .getAttribute(HibernateListener.KEY_NAME);
+	  
+	 	session = sessionFactory.openSession();
+		session.beginTransaction();	
+		
+		TipoEvento tipoEvento = (TipoEvento) session.createCriteria(TipoEvento.class).add(Restrictions.eq("idTipo", id)).add(Restrictions.eq("d_e_l_e_t", false)).uniqueResult();
+		
+		session.close();
+      return tipoEvento;
+      
+        
+       
+	}
+	
 
 	
 	

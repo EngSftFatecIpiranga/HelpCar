@@ -1,6 +1,7 @@
 package br.com.helpcar.actions;
 
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
@@ -22,8 +23,8 @@ import br.com.helpcar.models.Usuario;
 import br.com.helpcar.utils.EncriptadorSenha;
 import br.com.helpcar.dao.CondutorDao;
 
-@ParentPackage("default")
-public class CadastraUsuarioAction {
+
+public class CadastraUsuarioAction  {
 	/**
 	 * 
 	 */
@@ -35,8 +36,9 @@ public class CadastraUsuarioAction {
 	
 	
 	@Action(value="cadastraUsuario", results={
-			@Result(name="ok", type= "redirectAction", params={"actionName","loginForm", "msg", "${msg}"}),
-			@Result(name="erro", type= "redirectAction", params={"actionName","cadastroForm", "msg", "${msg}"})
+			@Result(name="success", type= "redirectAction", params={"actionName","loginForm", "msg", "${msg}", "tipo","${tipo}"}),
+			@Result(name="erro", type= "redirectAction", params={"actionName","cadastroForm", "msg", "${msg}","tipo","${tipo}"}),
+			@Result(name="input", location= "cadastra-usuario.jsp")
 			})	
 	public String execute(){
 		
@@ -47,7 +49,7 @@ public class CadastraUsuarioAction {
 				condutorDao.cadastraCondutor(condutor);
 				setMsg("Usuario cadastrado com sucesso!");
 				setTipo("success");
-				
+				return "success";
 			}else{
 				setMsg("Nao foi possivel cadastrar este usuario, já existe um usuario com este cadastro!");
 				setTipo("notice");
@@ -59,7 +61,7 @@ public class CadastraUsuarioAction {
 			System.out.println(e);
 			return "erro";
 		}
-		return "ok";
+		
 		
 	}
 

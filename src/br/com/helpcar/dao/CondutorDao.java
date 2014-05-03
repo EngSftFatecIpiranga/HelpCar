@@ -142,6 +142,40 @@ public class CondutorDao  {
 		
 	}
 	/**
+	   * Método para verificar se existe o condutor 
+	   * informado está cadastrado no banco.
+	   * @param Condutor (objeto)
+	   * @return boolean
+	   * @author Marcio Katsumata
+	   * @since 1.0
+	   * @version 1.0
+	   */
+	public boolean existeLoginCondutor(Condutor condutor){
+		session = null;
+	       
+  	sessionFactory = 
+ 	         (SessionFactory) ServletActionContext.getServletContext()
+                      .getAttribute(HibernateListener.KEY_NAME);
+  
+ 		session = sessionFactory.openSession();
+		try{
+			session.beginTransaction();	
+
+	
+			List  usuarios= session.createCriteria(Condutor.class).add(Restrictions.eq("login",condutor.getLogin())).add(Restrictions.eq("senha", condutor.getSenha())).list();
+   
+    		boolean existeUsuario = (usuarios != null && !usuarios.isEmpty());
+    		session.getTransaction().commit();
+    		session.close();
+    		return existeUsuario;
+		}catch (Exception e){
+			return false;
+		}
+   
+
+		
+	}
+	/**
 	   * Método para achar um condutor
 	   * informado está cadastrado no banco.
 	   * @param Usuario (objeto)

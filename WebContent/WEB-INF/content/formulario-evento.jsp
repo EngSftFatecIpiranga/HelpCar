@@ -29,9 +29,11 @@
 						<td width="100%">Data Evento:<j:campoData id="eventos[${count}].dataEvento" classe="${count}" /></td>
 				</tr>
 				</table>
+				<input type="hidden" name="eventos[${count}].idAux" value="${tipo.idTipo}" />
 				<c:set var="count" value="${count + 1}" scope="page" />
+				
 			</c:forEach>
-
+				
 			<table align="center">
 				<tr>
 					<td><p>

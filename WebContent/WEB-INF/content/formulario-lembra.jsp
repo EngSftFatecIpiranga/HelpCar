@@ -17,8 +17,7 @@
 		<p>Insira o e-mail cadastrado que enviaremos uma nova senha para o seu e-mail e</p>
 		<p>inclusive o seu login</p>
 		<s:form action="lembraSenha" method="post" validate="true">
-			<input type="hidden" name="msg" id="msg" value="${msg}" />
-			<input type="hidden" name="tipo" id="msg" value="${msg}" />
+
 			<s:textfield name="condutor.email" label="Informe o e-mail cadastrado" required="true" />
 			<s:submit value="entrar" />
 		</s:form>
