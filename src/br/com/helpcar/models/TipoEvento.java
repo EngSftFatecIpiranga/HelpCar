@@ -35,7 +35,7 @@ public class TipoEvento {
 	@Column (name="km_validade")
 	private int kmValidade;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tipoEvento")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tipoEvento")
 	private Set<Evento> evento;
 	
 	

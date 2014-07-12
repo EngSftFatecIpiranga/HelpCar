@@ -1,5 +1,7 @@
 package br.com.helpcar.actions;
-
+import br.com.helpcar.utils.CalendarUtil;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +16,7 @@ import br.com.helpcar.dao.TipoEventoDao;
 import br.com.helpcar.models.Evento;
 import br.com.helpcar.models.TipoEvento;
 import br.com.helpcar.models.Veiculo;
+import br.com.helpcar.utils.EditaTexto;
 
 public class CadastraEventoAction {
 	private List<Evento> eventos;
@@ -22,7 +25,7 @@ public class CadastraEventoAction {
 	private List<TipoEvento> tiposEvento;
 	private String msg;
 	private Veiculo veiculo;
-	
+
 	@Action(value="cadastraEvento", results={
 			@Result(name="ok", location ="menu.jsp"),
 			@Result(name="erro", type= "redirectAction",params={"actionName","cadatroEventoForm", "msg", "${msg}"})
@@ -37,7 +40,7 @@ public class CadastraEventoAction {
 		tiposEvento = tipoEventoDao.listaTodos();
 
 		for (Evento evento: eventos){
-			
+		
 			evento.setTipoEvento(tiposEvento.get(index));
 			evento.setDataLimite(verificaVencimentoData(evento));
 			evento.setKmLimite(verificaVencimentoKm(evento));
@@ -74,15 +77,20 @@ public class CadastraEventoAction {
 
 	public Calendar verificaVencimentoData(Evento evento){
 		Calendar data = null;
-		int kmMedia = 0;
 		int kmValidade =0;
+		int kmMedia = 0;
 		int dias;
 		
+		data= CalendarUtil.stringCalendar(CalendarUtil.calendarString(evento.getDataEvento()));
 		kmMedia = veiculo.getKmMediaDia();
 		kmValidade = evento.getTipoEvento().getKmValidade();
 		dias = kmValidade/kmMedia;
-		data = evento.getDataEvento();
-		data.add(Calendar.DAY_OF_YEAR,dias );
+		try{
+			data.add(Calendar.DAY_OF_MONTH,dias);
+		}catch (Exception e){
+			System.out.println(e);
+		}
+		evento.setDataLimite(data);
 
 		return data;
 	}
@@ -101,4 +109,7 @@ public class CadastraEventoAction {
 
 		return km;
 	}
+
+
+	
 }

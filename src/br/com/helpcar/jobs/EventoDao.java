@@ -1,4 +1,4 @@
-package br.com.helpcar.dao;
+package br.com.helpcar.jobs;
 
 import java.util.Calendar;
 import java.util.List;
@@ -13,13 +13,14 @@ import br.com.helpcar.listener.HibernateListener;
 import br.com.helpcar.models.Evento;
 import br.com.helpcar.models.Usuario;
 import br.com.helpcar.models.Veiculo;
+import br.com.helpcar.utils.HibernateUtil;
 
 /**
  * Classe persistência do evento
  * @author: Marcio Shigueru Katsumata
  * @version: 1.0
  */
-public class EventoDao {
+public class EventoDao extends HibernateUtil {
 	//variáveis
 	private Session session;
 	private SessionFactory sessionFactory;
@@ -32,14 +33,7 @@ public class EventoDao {
 	   */
 	
 	public EventoDao(){
-		session = null;
-	       
-  	sessionFactory = 
- 	         (SessionFactory) ServletActionContext.getServletContext()
-                      .getAttribute(HibernateListener.KEY_NAME);
-  
- 		session = sessionFactory.openSession();
- 		
+		session = getSession();
  		
 	}
 	
@@ -154,8 +148,11 @@ public class EventoDao {
 	@SuppressWarnings("unchecked")
 	public List<Evento> listaEventoVencendoQuinzenal(Calendar data) {
 		session.beginTransaction();	
-		data.add(Calendar.DAY_OF_MONTH,-15);
-		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.tipoEvento.alerta : alerta ").setCalendar("data_limite", data).setBoolean("alerta", true);
+		data.add(Calendar.DAY_OF_MONTH,15);
+		data.set(Calendar.HOUR_OF_DAY,0);
+		data.set(Calendar.MINUTE,0);
+		data.set(Calendar.SECOND,0);
+		Query query = session.createQuery("FROM Evento as e WHERE e.dataLimite = :data_limite ").setCalendar("data_limite", data);
     	List<Evento>  eventos = query.list();
       
     	
@@ -169,7 +166,7 @@ public class EventoDao {
 	public List<Evento> listaEventoVencendoSemanal(Calendar data) {
 		session.beginTransaction();	
 		data.add(Calendar.DAY_OF_MONTH,-15);
-		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite and e.tipoEvento.alerta : alerta ").setCalendar("data_limite", data).setBoolean("alerta", true);
+		Query query = session.createQuery("FROM Evento as e WHERE e.data_limite = : data_limite ").setCalendar("data_limite", data);
     	List<Evento>  eventos = query.list();
       
     	

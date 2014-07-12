@@ -1,6 +1,11 @@
 package br.com.helpcar.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+
+
 
 
 import javax.persistence.Column;
@@ -11,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 /**
@@ -26,15 +33,16 @@ public class Evento {
 	private int idEvento;
 	
 	//Relacionamento com a tabela veiculos muitos para um
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_veiculo", nullable = false)
 	private Veiculo veiculo;
 	
 	//Relacionamento com a tabela tipo_evento muitos para um
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tipo", nullable = false)
 	private TipoEvento tipoEvento;
 	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Column(name="data_evento")
 	private Calendar dataEvento;
 	
@@ -85,6 +93,7 @@ public class Evento {
 
 	public void setDataEvento(Calendar dataEvento) {
 		this.dataEvento = dataEvento;
+		
 	}
 
 	public int getKmEvento() {

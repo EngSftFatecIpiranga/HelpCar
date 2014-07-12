@@ -25,7 +25,7 @@
 
 <listener>
 	<listener-class>
-             br.com.helpcar.listener.QuartzSchedulerListener
+             br.com.helpcar.listener.TaskReminder
 	</listener-class>
 </listener>
 

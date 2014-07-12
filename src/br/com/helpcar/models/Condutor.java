@@ -29,7 +29,7 @@ public class Condutor extends Usuario {
 	private Calendar vencimentoCnh;
 
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
     @JoinTable(name="condutor_has_veiculos", joinColumns={@JoinColumn(name="id_usuario")}, inverseJoinColumns={@JoinColumn(name="id_veiculo")})
 	private List<Veiculo> veiculo;
 	

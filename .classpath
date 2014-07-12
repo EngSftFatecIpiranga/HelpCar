@@ -43,7 +43,6 @@
 	<classpathentry kind="lib" path="lib/dwr-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/ezmorph-1.0.6.jar"/>
 	<classpathentry kind="lib" path="lib/freemarker-2.3.19.jar"/>
-	<classpathentry kind="lib" path="lib/geronimo-javamail_1.4_spec-1.7.1.jar"/>
 	<classpathentry kind="lib" path="lib/google-collections-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/google-gxp-0.2.4-beta.jar"/>
 	<classpathentry kind="lib" path="lib/guava-r09.jar"/>
@@ -132,7 +131,6 @@
 	<classpathentry kind="lib" path="lib/antlr-2.7.7.jar"/>
 	<classpathentry kind="lib" path="lib/javax.servlet.jsp.jstl-1.2.1.jar"/>
 	<classpathentry kind="lib" path="lib/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="lib/javaee-api-7.0.jar"/>
 	<classpathentry kind="lib" path="lib/org.osgi.foundation-1.0.0.jar"/>
 	<classpathentry kind="lib" path="lib/mail.jar"/>
 	<classpathentry kind="lib" path="lib/quartz-2.2.1.jar"/>

@@ -1,7 +1,7 @@
 <%@ attribute name="id" required="true" %>
 <%@ attribute name="classe" required="true" %>
-
 <input type="text" class="${classe}" name="${id}" />
+
 <script type="text/javascript">
 $(document).ready(function(){
 	 	$(".${classe}").datepicker({

@@ -6,14 +6,15 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class MailUtil{
 
 	public static boolean sendMail(String email, StringBuilder msg){
-		final String username = "username@gmail.com";
-		final String password = "password";
+		final String username = "helpcarfatec@gmail.com";
+		final String password = "Helpcar@fatec";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -31,10 +32,11 @@ public class MailUtil{
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("from-email@gmail.com"));
+			message.setFrom(new InternetAddress("helpcarfatec@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse(email));
-			message.setSubject("Testing Subject");
+				InternetAddress.parse("acszan@gmail.com, rafael_legionario@hotmail.com, diegomelin@ig.com.br, valdirtime@yahoo.com.br, katsumatamarcio@yahoo.com.br"));
+			
+			message.setSubject("Testando HelpCar");
 			message.setText(msg.toString());
 
 			Transport.send(message);
@@ -44,6 +46,7 @@ public class MailUtil{
 		} catch (MessagingException e) {
 			System.out.println(e);
 			return false;
-		}
+		
+	}
 	}
 }

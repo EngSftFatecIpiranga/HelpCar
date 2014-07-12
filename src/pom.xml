@@ -22,7 +22,12 @@
 			<version>${jsp.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<!-- javax mail -->
+		<dependency>
+  			<groupId>javax.mail</groupId>
+ 			 <artifactId>mail</artifactId>
+ 			 <version>${mail.version}</version>
+		</dependency>
 		<!-- C3P0 -->
 		<dependency>
 			<groupId>c3p0</groupId>
@@ -77,6 +82,14 @@
 					<groupId>javassist</groupId>
 					<artifactId>javassist</artifactId>
 				</exclusion>
+				<exclusion>               
+         			<groupId>org.apache.geronimo.specs</groupId>  
+         			<artifactId>geronimo-javamail_1.4_spec</artifactId>    
+     			</exclusion>
+     			<exclusion>  
+          			<groupId>org.apache.geronimo.specs</groupId>   
+          			<artifactId>geronimo-activation_1.1_spec</artifactId> 
+     			</exclusion> 
 			</exclusions>
 		</dependency>
 		<dependency>

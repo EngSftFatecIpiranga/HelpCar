@@ -59,11 +59,11 @@ public class Veiculo {
 
 
 
-	 @ManyToMany(cascade=CascadeType.ALL ,mappedBy="veiculo")
+	 @ManyToMany(cascade=CascadeType.ALL , fetch= FetchType.EAGER, mappedBy="veiculo")
 	private List<Condutor> condutor;
 	
 
-	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "veiculo")
+	 @OneToMany(fetch= FetchType.EAGER, mappedBy = "veiculo")
 	private Set<Evento> evento;
 	 
 	 
